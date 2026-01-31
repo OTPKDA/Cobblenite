@@ -187,22 +187,26 @@ export default function Home() {
             </div>
             <ul className="space-y-4 text-white/60 mb-10">
               <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> XP Pokémon x2 sur tous les combats
+                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#facc15" opacity="0.2"/><text x="10" y="14" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#facc15">x2</text></svg>
+                XP Pokémon x2 sur tous les combats
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> 1 Master Ball par semaine
+                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#7c3aed"/><line x1="3" y1="10" x2="17" y2="10" stroke="#1a1a2e" strokeWidth="2"/><circle cx="10" cy="10" r="3" fill="white" stroke="#1a1a2e" strokeWidth="1.5"/><path d="M 5 4 Q 10 0 15 4" fill="none" stroke="#c084fc" strokeWidth="1.5"/></svg>
+                1 Master Ball par semaine
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> 25 Poké Balls par jour
+                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#ef4444" /><circle cx="10" cy="10" r="9" fill="url(#pokeball)"/><defs><linearGradient id="pokeball" x1="0" y1="0" x2="0" y2="1"><stop offset="50%" stopColor="#ef4444"/><stop offset="50%" stopColor="white"/></linearGradient></defs><line x1="1" y1="10" x2="19" y2="10" stroke="#1a1a2e" strokeWidth="2"/><circle cx="10" cy="10" r="3" fill="white" stroke="#1a1a2e" strokeWidth="1.5"/></svg>
+                25 Poké Balls par jour
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> 5 Ultra Balls par jour
-              </li>
-<li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Préfixe [VIP] en chat
+                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="url(#ultraball)"/><defs><linearGradient id="ultraball" x1="0" y1="0" x2="0" y2="1"><stop offset="50%" stopColor="#1a1a2e"/><stop offset="50%" stopColor="white"/></linearGradient></defs><line x1="1" y1="10" x2="19" y2="10" stroke="#facc15" strokeWidth="2"/><circle cx="10" cy="10" r="3" fill="white" stroke="#facc15" strokeWidth="1.5"/></svg>
+                5 Ultra Balls par jour
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Slots de PC supplémentaires (60)
+                <span className="inline-block px-2 py-0.5 bg-yellow-500/20 border border-yellow-500/30 rounded text-yellow-300 text-xs font-bold font-mono tracking-wider shadow-[0_0_8px_rgba(234,179,8,0.3)]">VIP</span> Préfixe en chat
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="inline-block px-2.5 py-0.5 bg-blue-500/20 border border-blue-500/30 rounded text-blue-300 text-xs font-bold font-mono shadow-[0_0_8px_rgba(59,130,246,0.3)]">60</span> Slots de PC supplémentaires
               </li>
             </ul>
             <a
