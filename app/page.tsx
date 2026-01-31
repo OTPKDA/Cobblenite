@@ -151,6 +151,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Dracaufeu - entre Serveur et Rejoindre */}
+      <div className="relative h-0 max-w-7xl mx-auto">
+        <img src="/dracau.png" alt="Dracaufeu" className="absolute -right-[300px] md:-right-[500px] top-1/2 -translate-y-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
+      </div>
+
       {/* Rejoindre */}
       <section id="rejoindre" className="relative py-32 px-6">
         <div className="max-w-2xl mx-auto text-center">
@@ -163,6 +168,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Pikachu - entre Rejoindre et VIP */}
+      <div className="relative h-0 max-w-7xl mx-auto">
+        <img src="/pika.png" alt="Pikachu" className="absolute -left-[300px] md:-left-[500px] top-1/2 -translate-y-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
+      </div>
 
       {/* VIP */}
       <section id="vip" className="relative py-32 px-6">
