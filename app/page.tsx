@@ -198,10 +198,7 @@ export default function Home() {
               <li className="flex items-center gap-3">
                 <span className="w-1 h-1 bg-purple-400 rounded-full" /> 5 Ultra Balls par jour
               </li>
-              <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Kit VIP quotidien
-              </li>
-              <li className="flex items-center gap-3">
+<li className="flex items-center gap-3">
                 <span className="w-1 h-1 bg-purple-400 rounded-full" /> Préfixe [VIP] en chat
               </li>
               <li className="flex items-center gap-3">
