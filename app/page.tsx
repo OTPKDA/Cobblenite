@@ -171,18 +171,31 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Grade VIP</h2>
           <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl shadow-purple-500/5 hover:border-white/20 transition-all duration-500">
             <div className="text-center mb-8">
-              <span className="inline-block px-4 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-300 text-sm font-medium mb-4">VIP</span>
-              <p className="text-white/40">Accède à des avantages exclusifs</p>
+              <span className="inline-block px-4 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-300 text-sm font-medium mb-4">VIP Trainer</span>
+              <p className="text-white/40 mt-2">Deviens un dresseur d&apos;élite sur Cobblenite</p>
+              <p className="text-white text-3xl font-bold mt-4">4.99&euro;<span className="text-white/40 text-base font-normal">/mois</span></p>
             </div>
             <ul className="space-y-4 text-white/60 mb-10">
               <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Avantage 1 (à personnaliser)
+                <span className="w-1 h-1 bg-purple-400 rounded-full" /> XP Pokémon x2 sur tous les combats
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Avantage 2 (à personnaliser)
+                <span className="w-1 h-1 bg-purple-400 rounded-full" /> 1 Master Ball par semaine
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Avantage 3 (à personnaliser)
+                <span className="w-1 h-1 bg-purple-400 rounded-full" /> 25 Poké Balls par jour
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-1 h-1 bg-purple-400 rounded-full" /> 5 Ultra Balls par jour
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Kit VIP quotidien
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Préfixe [VIP] en chat
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-1 h-1 bg-purple-400 rounded-full" /> Slots de PC supplémentaires (60)
               </li>
             </ul>
             <a
