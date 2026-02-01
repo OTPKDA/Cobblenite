@@ -66,11 +66,13 @@ const NAV_ITEMS = [
   { id: "presentation", label: "Le serveur", href: "#presentation" },
   { id: "rejoindre", label: "Rejoindre", href: "#rejoindre" },
   { id: "vip", label: "VIP", href: "#vip" },
+  { id: "discord", label: "Discord", href: "#discord" },
 ];
 
 export default function Home() {
   const [active, setActive] = useState("hero");
   const [bubble, setBubble] = useState({ left: 0, width: 0 });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
@@ -92,10 +94,10 @@ export default function Home() {
     const handleScroll = () => {
       const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
       if (atBottom) {
-        setActive("vip");
+        setActive("discord");
         return;
       }
-      const sections = ["vip", "rejoindre", "presentation"];
+      const sections = ["discord", "vip", "rejoindre", "presentation"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= 200) {
@@ -118,13 +120,53 @@ export default function Home() {
         <div className="absolute top-[40%] right-[20%] w-[400px] h-[400px] bg-violet-500/10 rounded-full blur-[120px]" />
       </div>
 
-      {/* Logo top left */}
-      <a href="#" className="fixed top-4 left-12 z-50">
-        <img src="/logo.png" alt="Cobblenite" className="w-24 h-24 drop-shadow-[0_0_10px_rgba(168,85,247,0.3)]" />
+      {/* Logo top left - hidden on mobile */}
+      <a href="#" className="fixed top-4 left-4 md:left-12 z-50 hidden md:block">
+        <img src="/logo.png" alt="Cobblenite" className="w-16 h-16 md:w-24 md:h-24 drop-shadow-[0_0_10px_rgba(168,85,247,0.3)]" />
       </a>
 
-      {/* Navigation */}
-      <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50">
+      {/* Mobile menu button */}
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="fixed top-4 right-4 z-50 md:hidden p-3 bg-black/60 backdrop-blur-2xl border border-white/20 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+        aria-label="Menu"
+      >
+        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          {mobileMenuOpen ? (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
+
+      {/* Mobile menu overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
+          <nav className="absolute top-20 left-4 right-4 bg-black/90 backdrop-blur-2xl border border-white/20 rounded-2xl p-4 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+            <div className="flex flex-col gap-2">
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`px-4 py-3 text-base font-medium rounded-xl transition-colors duration-300 ${
+                    active === item.id
+                      ? "text-white bg-white/10"
+                      : "text-white/50 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </nav>
+        </div>
+      )}
+
+      {/* Desktop Navigation */}
+      <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden md:block">
         <div ref={navRef} className="relative flex items-center gap-0.5 bg-black/60 backdrop-blur-2xl border border-white/20 rounded-full px-1.5 py-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]">
           {/* Sliding bubble */}
           <div
@@ -252,10 +294,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pokemon 3 - avant footer */}
+      {/* Pokemon 3 - avant Discord */}
       <div className="relative h-0 max-w-7xl mx-auto">
         <img src="/pokemon3.png" alt="" className="absolute -right-[300px] md:-right-[500px] top-1/2 -translate-y-1/2 w-96 md:w-[700px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
       </div>
+
+      {/* Discord */}
+      <section id="discord" className="relative py-32 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-purple-400/60 mb-4 font-medium">Communauté</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Discord</h2>
+          <div className="flex flex-col items-center gap-8">
+            <svg className="w-24 h-24 text-[#5865F2] drop-shadow-[0_0_30px_rgba(88,101,242,0.4)]" viewBox="0 0 127.14 96.36" fill="currentColor">
+              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+            </svg>
+            <p className="text-white/40 text-lg max-w-md">
+              Rejoins notre communauté Discord pour discuter, trouver des partenaires de combat et rester informé des événements !
+            </p>
+            <a
+              href="https://discord.gg/AnhXRh2uKv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group px-8 py-3.5 bg-[#5865F2]/20 hover:bg-[#5865F2]/30 backdrop-blur-md text-white rounded-full font-semibold text-base transition-all duration-300 border border-[#5865F2]/30 hover:border-[#5865F2]/50 hover:shadow-lg hover:shadow-[#5865F2]/20"
+            >
+              Rejoindre la communauté
+              <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="relative border-t border-white/5 py-10 px-6 text-center text-sm text-white/20">
