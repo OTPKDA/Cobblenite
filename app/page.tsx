@@ -34,8 +34,8 @@ const SERVER_IP = "play.cobblenite.fr";
 const TEBEX_URL = "https://cobblenite.tebex.io";
 const DISCORD_SERVER_ID = "1423492671351296092";
 
-function PlayerCount() {
-  const [status, setStatus] = useState<{ online: boolean; players: { online: number; max: number } } | null>(null);
+function ServerStatus() {
+  const [online, setOnline] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -43,12 +43,9 @@ function PlayerCount() {
       try {
         const res = await fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`);
         const data = await res.json();
-        setStatus({
-          online: data.online,
-          players: data.players || { online: 0, max: 0 }
-        });
+        setOnline(data.online);
       } catch {
-        setStatus(null);
+        setOnline(null);
       } finally {
         setLoading(false);
       }
@@ -63,12 +60,12 @@ function PlayerCount() {
     return (
       <div className="flex items-center gap-2 text-white/40">
         <div className="w-2 h-2 bg-white/40 rounded-full animate-pulse" />
-        <span>Chargement...</span>
+        <span>Vérification...</span>
       </div>
     );
   }
 
-  if (!status || !status.online) {
+  if (!online) {
     return (
       <div className="flex items-center gap-2 text-red-400/80">
         <div className="w-2 h-2 bg-red-500 rounded-full" />
@@ -80,7 +77,7 @@ function PlayerCount() {
   return (
     <div className="flex items-center gap-2 text-green-400/80">
       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-      <span>{status.players.online} joueur{status.players.online > 1 ? "s" : ""} en ligne</span>
+      <span>Serveur en ligne</span>
     </div>
   );
 }
@@ -288,7 +285,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Rejoindre</h2>
           <p className="text-white/40 mb-4">Copie l&apos;IP et rejoins-nous en jeu</p>
           <div className="flex justify-center mb-6">
-            <PlayerCount />
+            <ServerStatus />
           </div>
           <div className="inline-flex items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl px-8 py-5 shadow-lg shadow-black/20">
             <code className="text-2xl font-mono bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">{SERVER_IP}</code>
