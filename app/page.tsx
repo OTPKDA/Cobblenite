@@ -2,6 +2,34 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
+function ParallaxImage({ src, alt, className, speed = 0.15 }: { src: string; alt: string; className: string; speed?: number }) {
+  const ref = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (ref.current) {
+            const rect = ref.current.getBoundingClientRect();
+            const center = rect.top + rect.height / 2;
+            const viewCenter = window.innerHeight / 2;
+            const offset = (center - viewCenter) * speed;
+            ref.current.style.transform = `translateY(${offset}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [speed]);
+
+  return <img ref={ref} src={src} alt={alt} className={`will-change-transform ${className}`} />;
+}
+
 const SERVER_IP = "play.cobblenite.fr";
 const TEBEX_URL = "https://cobblenite.tebex.io";
 
@@ -90,6 +118,11 @@ export default function Home() {
         <div className="absolute top-[40%] right-[20%] w-[400px] h-[400px] bg-violet-500/10 rounded-full blur-[120px]" />
       </div>
 
+      {/* Logo top left */}
+      <a href="#" className="fixed top-4 left-12 z-50">
+        <img src="/logo.png" alt="Cobblenite" className="w-24 h-24 drop-shadow-[0_0_10px_rgba(168,85,247,0.3)]" />
+      </a>
+
       {/* Navigation */}
       <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50">
         <div ref={navRef} className="relative flex items-center gap-0.5 bg-black/60 backdrop-blur-2xl border border-white/20 rounded-full px-1.5 py-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]">
@@ -123,9 +156,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#050510]/60 via-[#050510]/40 to-[#050510]" />
         </div>
         <p className="relative z-10 text-sm uppercase tracking-[0.3em] text-white mb-6 font-medium">Minecraft Cobblemon</p>
-        <h1 className="relative z-10 text-7xl md:text-9xl font-bold tracking-tight mb-6 bg-gradient-to-b from-white via-white/90 to-white/40 bg-clip-text text-transparent">
-          Cobblenite
-        </h1>
+        <img src="/logo-text.png" alt="Cobblenite" className="relative z-10 w-[400px] md:w-[600px] mb-6 drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]" />
         <p className="relative z-10 text-lg md:text-xl text-white/90 max-w-md mb-10 leading-relaxed">
           Capture, entraîne et combats des Pokémon dans un monde ouvert avec tes amis.
         </p>
@@ -153,7 +184,7 @@ export default function Home() {
 
       {/* Dracaufeu - entre Serveur et Rejoindre */}
       <div className="relative h-0 max-w-7xl mx-auto">
-        <img src="/dracau.png" alt="Dracaufeu" className="absolute -right-[300px] md:-right-[500px] top-1/2 -translate-y-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
+        <ParallaxImage src="/dracau.png" alt="Dracaufeu" speed={0.2} className="absolute -right-[300px] md:-right-[500px] top-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
       </div>
 
       {/* Rejoindre */}
@@ -171,7 +202,7 @@ export default function Home() {
 
       {/* Pikachu - entre Rejoindre et VIP */}
       <div className="relative h-0 max-w-7xl mx-auto">
-        <img src="/pika.png" alt="Pikachu" className="absolute -left-[300px] md:-left-[500px] top-1/2 -translate-y-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
+        <ParallaxImage src="/pika.png" alt="Pikachu" speed={-0.15} className="absolute -left-[300px] md:-left-[500px] top-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
       </div>
 
       {/* VIP */}
@@ -220,6 +251,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Pokemon 3 - avant footer */}
+      <div className="relative h-0 max-w-7xl mx-auto">
+        <img src="/pokemon3.png" alt="" className="absolute -right-[300px] md:-right-[500px] top-1/2 -translate-y-1/2 w-96 md:w-[700px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
+      </div>
 
       {/* Footer */}
       <footer className="relative border-t border-white/5 py-10 px-6 text-center text-sm text-white/20">

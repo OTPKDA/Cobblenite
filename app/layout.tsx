@@ -10,6 +10,10 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Cobblenite — Serveur Minecraft Cobblemon",
   description: "Rejoins Cobblenite, le serveur Minecraft Cobblemon. Capture, entraîne et combats des Pokémon avec tes amis.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
