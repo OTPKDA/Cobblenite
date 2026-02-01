@@ -32,6 +32,58 @@ function ParallaxImage({ src, alt, className, speed = 0.15 }: { src: string; alt
 
 const SERVER_IP = "play.cobblenite.fr";
 const TEBEX_URL = "https://cobblenite.tebex.io";
+const DISCORD_SERVER_ID = "1423492671351296092";
+
+function PlayerCount() {
+  const [status, setStatus] = useState<{ online: boolean; players: { online: number; max: number } } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStatus = async () => {
+      try {
+        const res = await fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}`);
+        const data = await res.json();
+        setStatus({
+          online: data.online,
+          players: data.players || { online: 0, max: 0 }
+        });
+      } catch {
+        setStatus(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStatus();
+    const interval = setInterval(fetchStatus, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center gap-2 text-white/40">
+        <div className="w-2 h-2 bg-white/40 rounded-full animate-pulse" />
+        <span>Chargement...</span>
+      </div>
+    );
+  }
+
+  if (!status || !status.online) {
+    return (
+      <div className="flex items-center gap-2 text-red-400/80">
+        <div className="w-2 h-2 bg-red-500 rounded-full" />
+        <span>Serveur hors ligne</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-2 text-green-400/80">
+      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+      <span>{status.players.online} joueur{status.players.online > 1 ? "s" : ""} en ligne</span>
+    </div>
+  );
+}
 
 function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
@@ -234,7 +286,10 @@ export default function Home() {
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-purple-400/60 mb-4 font-medium">Connexion</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Rejoindre</h2>
-          <p className="text-white/40 mb-8">Copie l&apos;IP et rejoins-nous en jeu</p>
+          <p className="text-white/40 mb-4">Copie l&apos;IP et rejoins-nous en jeu</p>
+          <div className="flex justify-center mb-6">
+            <PlayerCount />
+          </div>
           <div className="inline-flex items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl px-8 py-5 shadow-lg shadow-black/20">
             <code className="text-2xl font-mono bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">{SERVER_IP}</code>
             <CopyButton text={SERVER_IP} />
