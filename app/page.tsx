@@ -52,7 +52,7 @@ function ServerStatus() {
     };
 
     fetchStatus();
-    const interval = setInterval(fetchStatus, 60000);
+    const interval = setInterval(fetchStatus, 30000);
     return () => clearInterval(interval);
   }, []);
 
