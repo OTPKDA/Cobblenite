@@ -113,7 +113,6 @@ function CopyButton({ text }: { text: string }) {
 const NAV_ITEMS = [
   { id: "hero", label: "Cobblenite", href: "#" },
   { id: "presentation", label: "Le serveur", href: "#presentation" },
-  { id: "wiki", label: "Wiki", href: "#wiki" },
   { id: "rejoindre", label: "Rejoindre", href: "#rejoindre" },
   { id: "vip", label: "VIP", href: "#vip" },
   { id: "discord", label: "Discord", href: "#discord" },
@@ -147,7 +146,7 @@ export default function Home() {
         setActive("discord");
         return;
       }
-      const sections = ["discord", "vip", "rejoindre", "wiki", "presentation"];
+      const sections = ["discord", "vip", "rejoindre", "presentation"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= 200) {
@@ -271,44 +270,6 @@ export default function Home() {
             entraîner et combattre des Pokémon dans un monde ouvert avec tes amis.
             Explore le monde, complète ton Pokédex, et deviens le meilleur dresseur.
           </p>
-        </div>
-      </section>
-
-      {/* Wiki */}
-      <section id="wiki" className="relative py-32 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-purple-400/60 mb-4 font-medium">Guide</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Wiki Cobblenite</h2>
-
-          {/* Liquid Glass Wiki Icon */}
-          <div className="flex justify-center mb-8">
-            <div className="relative group">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-60 group-hover:opacity-80" />
-              {/* Glass container */}
-              <div className="relative w-24 h-24 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] group-hover:border-white/30 group-hover:bg-white/15 transition-all duration-500">
-                {/* Inner highlight */}
-                <div className="absolute inset-[2px] rounded-[22px] bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
-                {/* Wiki book icon */}
-                <svg className="w-12 h-12 text-white/80 drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-lg text-white/40 leading-relaxed mb-10">
-            Tu débutes sur Cobblenite ? Consulte notre Wiki pour tout savoir sur le serveur : commandes, fonctionnalités, astuces et bien plus encore !
-          </p>
-          <a
-            href="https://cobblenite.gitbook.io/wiki-cobblenite/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 hover:bg-white/15 backdrop-blur-md text-white rounded-full font-semibold text-base transition-all duration-300 border border-white/20 hover:border-white/30 hover:shadow-lg hover:shadow-purple-500/10"
-          >
-            Accéder au Wiki
-            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-          </a>
         </div>
       </section>
 
