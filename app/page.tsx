@@ -171,7 +171,7 @@ export default function Home() {
 
       {/* Logo top left - hidden on mobile */}
       <a href="#" className="fixed top-4 left-4 md:left-12 z-50 hidden md:block">
-        <img src="/logo.png" alt="Cobblenite" className="w-16 h-16 md:w-24 md:h-24 drop-shadow-[0_0_10px_rgba(168,85,247,0.3)]" />
+        <img src="/logo.webp" alt="Cobblenite" className="w-16 h-16 md:w-24 md:h-24 drop-shadow-[0_0_10px_rgba(168,85,247,0.3)]" />
       </a>
 
       {/* Mobile menu button */}
@@ -243,11 +243,11 @@ export default function Home() {
       <section className="relative flex flex-col items-center justify-center min-h-screen text-center px-6">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
-          <img src="/hero-bg.jpg" alt="" className="w-full h-full object-cover object-[25%_center]" />
+          <img src="/hero-bg.webp" alt="" className="w-full h-full object-cover object-[25%_center]" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050510]/60 via-[#050510]/40 to-[#050510]" />
         </div>
         <p className="relative z-10 text-sm uppercase tracking-[0.3em] text-white mb-6 font-medium">Minecraft Cobblemon</p>
-        <img src="/logo-text.png" alt="Cobblenite" className="relative z-10 w-[400px] md:w-[600px] mb-6 drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]" />
+        <img src="/logo-text.webp" alt="Cobblenite" className="relative z-10 w-[400px] md:w-[600px] mb-6 drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]" />
         <p className="relative z-10 text-lg md:text-xl text-white/90 max-w-md mb-10 leading-relaxed">
           Capture, entraîne et combats des Pokémon dans un monde ouvert avec tes amis.
         </p>
@@ -275,7 +275,7 @@ export default function Home() {
 
       {/* Dracaufeu - entre Serveur et Rejoindre */}
       <div className="relative h-0 max-w-7xl mx-auto">
-        <ParallaxImage src="/dracau.png" alt="Dracaufeu" speed={0.2} className="absolute -right-[300px] md:-right-[500px] top-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
+        <ParallaxImage src="/dracau.webp" alt="Dracaufeu" speed={0.2} className="absolute -right-[300px] md:-right-[500px] top-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
       </div>
 
       {/* Rejoindre */}
@@ -296,7 +296,7 @@ export default function Home() {
 
       {/* Pikachu - entre Rejoindre et VIP */}
       <div className="relative h-0 max-w-7xl mx-auto">
-        <ParallaxImage src="/pika.png" alt="Pikachu" speed={-0.15} className="absolute -left-[300px] md:-left-[500px] top-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
+        <ParallaxImage src="/pika.webp" alt="Pikachu" speed={-0.15} className="absolute -left-[300px] md:-left-[500px] top-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
       </div>
 
       {/* VIP */}
@@ -348,7 +348,7 @@ export default function Home() {
 
       {/* Pokemon 3 - avant Discord */}
       <div className="relative h-0 max-w-7xl mx-auto">
-        <img src="/pokemon3.png" alt="" className="absolute -right-[300px] md:-right-[500px] top-1/2 -translate-y-1/2 w-96 md:w-[700px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
+        <img src="/pokemon3.webp" alt="" className="absolute -right-[300px] md:-right-[500px] top-1/2 -translate-y-1/2 w-96 md:w-[700px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
       </div>
 
       {/* Discord */}
