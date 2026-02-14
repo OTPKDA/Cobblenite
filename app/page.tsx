@@ -497,19 +497,19 @@ function PackCard({ pack, onOpenDetail }: { pack: typeof PACKS[0]; onOpenDetail:
           <span className="text-xl font-bold" style={{ color: pack.color }}>{pack.price}</span>
         </p>
 
-        {/* Key items with emojis (3 max) */}
-        <div className="space-y-1.5 mb-3">
-          {pack.items.slice(0, 3).map((item, i) => (
-            <div key={i} className="flex items-center gap-2 text-white/55 text-xs">
-              <span className="text-sm w-5 text-center">{item.icon}</span>
-              <span>{item.text}</span>
+        {/* PokéDollars highlight */}
+        {(() => {
+          const pdItem = pack.items.find(i => i.text.includes("PokéDollars"));
+          return pdItem ? (
+            <div className="text-center mb-3 py-2.5 rounded-xl border" style={{ borderColor: "rgba(251,191,36,0.25)", background: "rgba(251,191,36,0.08)" }}>
+              <span className="text-lg font-bold text-yellow-400">💰 {pdItem.text}</span>
             </div>
-          ))}
-        </div>
+          ) : null;
+        })()}
 
-        {/* Rewards + Jackpot */}
-        <div className="rounded-xl p-2.5 mb-3 border" style={{ borderColor: `${pack.color}15`, background: `${pack.color}08` }}>
-          <div className="flex items-center gap-1.5 text-[11px] text-white/50 mb-1">
+        {/* Gacha + Jackpot */}
+        <div className="rounded-xl p-2.5 mb-2 border" style={{ borderColor: `${pack.color}15`, background: `${pack.color}08` }}>
+          <div className="flex items-center gap-1.5 text-[11px] text-white/70 mb-1 font-semibold">
             <span>🎰</span> {pack.gacha}
           </div>
           {pack.jackpot && (
@@ -518,6 +518,14 @@ function PackCard({ pack, onOpenDetail }: { pack: typeof PACKS[0]; onOpenDetail:
             </div>
           )}
         </div>
+
+        {/* Other items count */}
+        {(() => {
+          const otherCount = pack.items.filter(i => !i.text.includes("PokéDollars")).length;
+          return otherCount > 0 ? (
+            <p className="text-center text-white/30 text-[11px] mb-3">+ {otherCount} objets inclus</p>
+          ) : null;
+        })()}
 
         {/* Mini pokemon preview */}
         {pack.gachaPokemon.length > 0 && (
