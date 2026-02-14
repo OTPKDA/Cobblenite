@@ -268,7 +268,7 @@ function GachaReel() {
           const isCaught = showCatch && caughtIdx !== null && (i % GACHA_POKEMON.length) === caughtIdx;
           return (
             <div
-              key={`${poke.id}-${i}`}
+              key={`${poke.sprite}-${i}`}
               className="relative flex flex-col items-center transition-all duration-500"
               style={{
                 opacity: isCaught ? 1 : 0.5,
