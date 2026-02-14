@@ -172,8 +172,8 @@ const PACKS = [
   },
 ];
 
-// ─── Pokémon sprite helpers (AI-generated, all PNG) ───
-const SPRITE = (name: string) => `/pokemon/${name}.png`;
+// ─── Pokémon sprite helpers (AI-generated, all WebP) ───
+const SPRITE = (name: string) => `/pokemon/${name}.webp`;
 
 // Pool of Pokémon for the gacha reel (local sprite name, display name, rarity color)
 const GACHA_POKEMON = [
