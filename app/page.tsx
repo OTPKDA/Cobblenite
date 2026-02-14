@@ -2,6 +2,321 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
+// ─── Pack data ───
+const PACKS = [
+  {
+    id: "starter",
+    name: "Pack Starter",
+    tagline: "Le premier pas de tout dresseur",
+    price: "6.99€",
+    color: "#4ade80",
+    url: "https://cobblenite.tebex.io/package/7279105",
+    sprite: "pikachu",
+    items: [
+      { icon: "🔴", text: "20 Poké Balls" },
+      { icon: "🔵", text: "10 Great Balls" },
+      { icon: "🧪", text: "10 Potions" },
+      { icon: "💊", text: "5 Revives" },
+      { icon: "💰", text: "50 PokéDollars" },
+    ],
+    gacha: "1 Clé Starter",
+    jackpot: "Pikachu Shiny",
+    jackpotSprite: "pikachu",
+    vip: null,
+    gachaPokemon: [
+      { name: "Bulbizarre", sprite: "bulbasaur" },
+      { name: "Salamèche", sprite: "charmander" },
+      { name: "Carapuce", sprite: "squirtle" },
+      { name: "Pikachu", sprite: "pikachu" },
+      { name: "Eevee", sprite: "eevee" },
+      { name: "Goupix", sprite: "vulpix" },
+    ],
+  },
+  {
+    id: "combat",
+    name: "Pack Combat",
+    tagline: "Pour les dresseurs ambitieux",
+    price: "14.99€",
+    color: "#ef4444",
+    url: "https://cobblenite.tebex.io/package/7279112",
+    sprite: "blastoise",
+    items: [
+      { icon: "⚡", text: "10 Ultra Balls" },
+      { icon: "🧪", text: "10 Hyper Potions" },
+      { icon: "🍬", text: "10 Rare Candy" },
+      { icon: "💊", text: "3 Ability Capsules" },
+      { icon: "💰", text: "150 PokéDollars" },
+    ],
+    gacha: "1 Clé Combat",
+    jackpot: "Tortank Shiny",
+    jackpotSprite: "blastoise",
+    vip: "7j VIP",
+    gachaPokemon: [
+      { name: "Lucario", sprite: "lucario" },
+      { name: "Garchomp", sprite: "garchomp" },
+      { name: "Tortank", sprite: "blastoise" },
+      { name: "Gardevoir", sprite: "gardevoir" },
+      { name: "Dracolosse", sprite: "dragonite" },
+      { name: "Braségali", sprite: "blaziken" },
+    ],
+  },
+  {
+    id: "shiny",
+    name: "Pack Shiny",
+    tagline: "La chasse aux chromatiques",
+    price: "29.99€",
+    color: "#22d3ee",
+    url: "https://cobblenite.tebex.io/package/7279137",
+    sprite: "charizard",
+    shiny: true,
+    items: [
+      { icon: "⚡", text: "10 Ultra Balls" },
+      { icon: "🍬", text: "10 Rare Candy" },
+      { icon: "💊", text: "5 Ability Capsules" },
+      { icon: "⬆️", text: "5 PP Up" },
+      { icon: "💰", text: "300 PokéDollars" },
+    ],
+    gacha: "1 Clé Ultra + 1 Clé Shiny",
+    jackpot: "Légendaire Shiny",
+    jackpotSprite: "rayquaza",
+    vip: "14j VIP",
+    gachaPokemon: [
+      { name: "Noctali", sprite: "umbreon" },
+      { name: "Nymphali", sprite: "sylveon" },
+      { name: "Ectoplasma", sprite: "gengar" },
+      { name: "Léviator", sprite: "gyarados" },
+      { name: "Amphinobi", sprite: "greninja" },
+      { name: "Jungko", sprite: "sceptile" },
+    ],
+  },
+  {
+    id: "legendaire",
+    name: "Pack Légendaire",
+    tagline: "Le pouvoir des légendes",
+    price: "49.99€",
+    color: "#fbbf24",
+    url: "https://cobblenite.tebex.io/package/7279147",
+    sprite: "ho-oh",
+    items: [
+      { icon: "🟣", text: "1 Master Ball" },
+      { icon: "🍬", text: "20 Rare Candy" },
+      { icon: "⬆️", text: "5 PP Max" },
+      { icon: "💊", text: "5 Ability Capsules" },
+      { icon: "💰", text: "500 PokéDollars" },
+    ],
+    gacha: "1 Clé Master + 1 Clé Légende",
+    jackpot: "Pokémon Légendaire",
+    jackpotSprite: "mewtwo",
+    vip: "21j VIP",
+    gachaPokemon: [
+      { name: "Mewtwo", sprite: "mewtwo" },
+      { name: "Rayquaza", sprite: "rayquaza" },
+      { name: "Lugia", sprite: "lugia" },
+      { name: "Ho-Oh", sprite: "ho-oh" },
+      { name: "Sulfura", sprite: "moltres" },
+      { name: "Dracolosse", sprite: "dragonite" },
+    ],
+  },
+  {
+    id: "legendaire-shiny",
+    name: "Pack Lég. Shiny",
+    tagline: "L'ultime collection",
+    price: "59.99€",
+    color: "#f472b6",
+    url: "https://cobblenite.tebex.io/package/7279151",
+    sprite: "rayquaza",
+    shiny: true,
+    items: [
+      { icon: "🟣", text: "2 Master Balls" },
+      { icon: "🍬", text: "30 Rare Candy" },
+      { icon: "⬆️", text: "10 PP Max" },
+      { icon: "💊", text: "10 Ability Capsules" },
+      { icon: "💰", text: "1000 PokéDollars" },
+    ],
+    gacha: "3 Clés Master + 1 Clé Lég. Shiny",
+    jackpot: "Moltres Shiny",
+    jackpotSprite: "moltres",
+    vip: "1 mois VIP",
+    gachaPokemon: [
+      { name: "Mewtwo", sprite: "mewtwo" },
+      { name: "Rayquaza", sprite: "rayquaza" },
+      { name: "Lugia", sprite: "lugia" },
+      { name: "Ho-Oh", sprite: "ho-oh" },
+      { name: "Sulfura", sprite: "moltres" },
+      { name: "Drattak", sprite: "salamence" },
+    ],
+  },
+  {
+    id: "vip",
+    name: "VIP",
+    tagline: "Deviens un dresseur d'élite",
+    price: "4.99€/mois",
+    color: "#a78bfa",
+    url: "https://cobblenite.tebex.io/package/7255215",
+    sprite: "lucario",
+    items: [
+      { icon: "✨", text: "Shiny Boost (x2 chances)" },
+      { icon: "🎁", text: "25 PokéDollars + 1 Clé VIP / jour" },
+      { icon: "🏠", text: "3 Homes (au lieu de 1)" },
+      { icon: "⚡", text: "Cooldowns réduits (/tpa, /rtp, /back)" },
+      { icon: "💀", text: "/back après la mort" },
+      { icon: "📦", text: "PC Boxes supplémentaires" },
+      { icon: "🛡️", text: "50 000 blocs de claims (x5)" },
+      { icon: "🎆", text: "Particules cosmétiques" },
+    ],
+    gacha: "Préfixe [VIP] en chat",
+    jackpot: null,
+    jackpotSprite: null,
+    vip: "Abonnement",
+    gachaPokemon: [],
+  },
+];
+
+// ─── Pokémon sprite helpers (AI-generated, all PNG) ───
+const SPRITE = (name: string) => `/pokemon/${name}.png`;
+
+// Pool of Pokémon for the gacha reel (local sprite name, display name, rarity color)
+const GACHA_POKEMON = [
+  // Commons (green)
+  { sprite: "pikachu", name: "Pikachu", color: "#4ade80" },
+  { sprite: "eevee", name: "Eevee", color: "#4ade80" },
+  { sprite: "charmander", name: "Salamèche", color: "#4ade80" },
+  { sprite: "bulbasaur", name: "Bulbizarre", color: "#4ade80" },
+  { sprite: "squirtle", name: "Carapuce", color: "#4ade80" },
+  { sprite: "dratini", name: "Minidraco", color: "#4ade80" },
+  { sprite: "shinx", name: "Lixy", color: "#4ade80" },
+  { sprite: "vulpix", name: "Goupix", color: "#4ade80" },
+  // Rares (blue)
+  { sprite: "lucario", name: "Lucario", color: "#60a5fa" },
+  { sprite: "gardevoir", name: "Gardevoir", color: "#60a5fa" },
+  { sprite: "gengar", name: "Ectoplasma", color: "#60a5fa" },
+  { sprite: "garchomp", name: "Carchacrok", color: "#60a5fa" },
+  { sprite: "greninja", name: "Amphinobi", color: "#60a5fa" },
+  { sprite: "blaziken", name: "Braségali", color: "#60a5fa" },
+  { sprite: "dragonite", name: "Dracolosse", color: "#60a5fa" },
+  { sprite: "umbreon", name: "Noctali", color: "#60a5fa" },
+  // Épiques (purple)
+  { sprite: "blastoise", name: "Tortank", color: "#a78bfa" },
+  { sprite: "salamence", name: "Drattak", color: "#a78bfa" },
+  { sprite: "gyarados", name: "Léviator", color: "#a78bfa" },
+  { sprite: "zoroark", name: "Zoroark", color: "#a78bfa" },
+  { sprite: "sylveon", name: "Nymphali", color: "#a78bfa" },
+  { sprite: "sceptile", name: "Jungko", color: "#a78bfa" },
+  // Légendaires (gold)
+  { sprite: "mewtwo", name: "Mewtwo", color: "#fbbf24" },
+  { sprite: "rayquaza", name: "Rayquaza", color: "#fbbf24" },
+  { sprite: "lugia", name: "Lugia", color: "#fbbf24" },
+  { sprite: "ho-oh", name: "Ho-Oh", color: "#fbbf24" },
+  { sprite: "moltres", name: "Sulfura", color: "#fbbf24" },
+];
+
+function GachaReel() {
+  const [caughtIdx, setCaughtIdx] = useState<number | null>(null);
+  const [showCatch, setShowCatch] = useState(false);
+  const reelRef = useRef<HTMLDivElement>(null);
+
+  // Every 4-7s, "catch" a random Pokémon
+  useEffect(() => {
+    const doCatch = () => {
+      // Pick a random visible Pokémon
+      const idx = Math.floor(Math.random() * GACHA_POKEMON.length);
+      setCaughtIdx(idx);
+      setShowCatch(true);
+
+      // Reset after animation
+      setTimeout(() => {
+        setShowCatch(false);
+        setCaughtIdx(null);
+      }, 2500);
+    };
+
+    const interval = setInterval(doCatch, 5000);
+    // First catch after 3s
+    const firstTimeout = setTimeout(doCatch, 3000);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(firstTimeout);
+    };
+  }, []);
+
+  // Build a shuffled reel with duplicates for seamless loop
+  const reelPokemon = [...GACHA_POKEMON, ...GACHA_POKEMON];
+
+  return (
+    <div className="relative mb-14 overflow-hidden">
+      {/* Title */}
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <div className="h-px flex-1 max-w-20 bg-gradient-to-r from-transparent to-white/10" />
+        <span className="text-white/30 text-xs uppercase tracking-[0.2em] font-medium">Récompenses</span>
+        <div className="h-px flex-1 max-w-20 bg-gradient-to-l from-transparent to-white/10" />
+      </div>
+
+      {/* Fade edges */}
+      <div className="absolute left-0 top-8 bottom-0 w-24 z-10 bg-gradient-to-r from-[#050510] to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-8 bottom-0 w-24 z-10 bg-gradient-to-l from-[#050510] to-transparent pointer-events-none" />
+
+      {/* Reel */}
+      <div
+        ref={reelRef}
+        className="flex gap-4 items-end"
+        style={{
+          animation: 'gacha-scroll 25s linear infinite',
+          width: 'max-content',
+        }}
+      >
+        {reelPokemon.map((poke, i) => {
+          const isCaught = showCatch && caughtIdx !== null && (i % GACHA_POKEMON.length) === caughtIdx;
+          return (
+            <div
+              key={`${poke.id}-${i}`}
+              className="relative flex flex-col items-center transition-all duration-500"
+              style={{
+                opacity: isCaught ? 1 : 0.5,
+                transform: isCaught ? 'scale(1.15) translateY(-8px)' : 'scale(1)',
+                filter: isCaught ? `drop-shadow(0 0 20px ${poke.color})` : 'none',
+              }}
+            >
+              {/* Catch flash */}
+              {isCaught && (
+                <>
+                  <div
+                    className="absolute inset-0 rounded-full blur-[30px] pointer-events-none animate-pulse"
+                    style={{ background: `${poke.color}30` }}
+                  />
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-20">
+                    <span
+                      className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider border whitespace-nowrap"
+                      style={{
+                        color: poke.color,
+                        borderColor: `${poke.color}50`,
+                        background: `${poke.color}20`,
+                        animation: 'gacha-catch-badge 0.5s ease-out',
+                      }}
+                    >
+                      Capturé !
+                    </span>
+                  </div>
+                </>
+              )}
+              <img
+                src={SPRITE(poke.sprite)}
+                alt={poke.name}
+                className="w-16 h-16 md:w-20 md:h-20 object-contain pointer-events-none select-none"
+                loading="lazy"
+                draggable={false}
+              />
+              <span className="text-[10px] mt-1 font-medium whitespace-nowrap transition-colors duration-300"
+                style={{ color: isCaught ? poke.color : 'rgba(255,255,255,0.25)' }}>
+                {poke.name}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function ParallaxImage({ src, alt, className, speed = 0.15 }: { src: string; alt: string; className: string; speed?: number }) {
   const ref = useRef<HTMLImageElement>(null);
 
@@ -110,14 +425,408 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
+const LAUNCHER_URL = "http://79.137.34.10/cobblenite/Cobblenite-Launcher-setup-1.0.0.exe";
+const CURSEFORGE_URL = "https://www.curseforge.com/minecraft/modpacks/cobblenite";
+
 const NAV_ITEMS = [
   { id: "hero", label: "Cobblenite", href: "#" },
   { id: "presentation", label: "Le serveur", href: "#presentation" },
   { id: "wiki", label: "Wiki", href: "#wiki" },
   { id: "rejoindre", label: "Rejoindre", href: "#rejoindre" },
-  { id: "vip", label: "VIP", href: "#vip" },
+  { id: "boutique", label: "Boutique", href: "#boutique" },
   { id: "discord", label: "Discord", href: "#discord" },
 ];
+
+// Only the 5 purchasable packs for the carousel (no VIP)
+const SHOP_PACKS = PACKS.filter(p => p.id !== "vip");
+const VIP_PACK = PACKS.find(p => p.id === "vip")!;
+
+function PackCard({ pack, onOpenDetail }: { pack: typeof PACKS[0]; onOpenDetail: () => void }) {
+  return (
+    <div
+      className="relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-lg transition-all duration-300 group p-5 cursor-pointer"
+      style={{
+        borderColor: `${pack.color}25`,
+        background: `linear-gradient(160deg, ${pack.color}0a 0%, transparent 60%)`,
+        minWidth: 270,
+        width: 290,
+        flexShrink: 0,
+      }}
+      onClick={onOpenDetail}
+    >
+      {/* Glow */}
+      <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full blur-[80px] pointer-events-none opacity-60" style={{ background: `${pack.color}15` }} />
+
+      <div className="relative z-10">
+        {/* Header row: badge + VIP */}
+        <div className="flex items-center justify-between mb-2">
+          <span className="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider border"
+            style={{ color: pack.color, borderColor: `${pack.color}35`, background: `${pack.color}12` }}>
+            Pack
+          </span>
+          {pack.vip && (
+            <span className="flex items-center gap-1 px-2.5 py-1 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-200 text-[10px] font-bold shadow-[0_0_10px_rgba(168,85,247,0.2)]">
+              <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              +{pack.vip}
+            </span>
+          )}
+        </div>
+
+        {/* Pokémon sprite - big and centered */}
+        <div className="flex justify-center my-4 relative">
+          {/* Shiny shimmer overlay */}
+          {"shiny" in pack && pack.shiny && (
+            <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+              <div className="w-20 h-20 rounded-full shiny-shimmer" style={{ background: `conic-gradient(from 0deg, transparent, ${pack.color}40, transparent, ${pack.color}20, transparent)` }} />
+            </div>
+          )}
+          <img
+            src={SPRITE(pack.sprite)}
+            alt={pack.name}
+            className="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-500 pointer-events-none select-none"
+            style={{ filter: `drop-shadow(0 0 16px ${pack.color}50)` }}
+            loading="lazy"
+            draggable={false}
+          />
+        </div>
+
+        {/* Name + price row */}
+        <h3 className="text-lg font-bold text-white text-center">{pack.name}</h3>
+        <p className="text-center mb-3">
+          <span className="text-xl font-bold" style={{ color: pack.color }}>{pack.price}</span>
+        </p>
+
+        {/* Key items with emojis (3 max) */}
+        <div className="space-y-1.5 mb-3">
+          {pack.items.slice(0, 3).map((item, i) => (
+            <div key={i} className="flex items-center gap-2 text-white/55 text-xs">
+              <span className="text-sm w-5 text-center">{item.icon}</span>
+              <span>{item.text}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Rewards + Jackpot */}
+        <div className="rounded-xl p-2.5 mb-3 border" style={{ borderColor: `${pack.color}15`, background: `${pack.color}08` }}>
+          <div className="flex items-center gap-1.5 text-[11px] text-white/50 mb-1">
+            <span>🎰</span> {pack.gacha}
+          </div>
+          {pack.jackpot && (
+            <div className="flex items-center gap-1.5 text-[11px]" style={{ color: pack.color }}>
+              <span>✨</span> Jackpot : <strong className="text-white">{pack.jackpot}</strong>
+            </div>
+          )}
+        </div>
+
+        {/* Mini pokemon preview */}
+        {pack.gachaPokemon.length > 0 && (
+          <div className="flex items-center justify-center gap-1 mb-3">
+            {pack.gachaPokemon.slice(0, 4).map((p, i) => (
+              <img key={i} src={SPRITE(p.sprite)} alt={p.name} className="w-8 h-8 object-contain opacity-50 group-hover:opacity-80 transition-opacity" loading="lazy" draggable={false} />
+            ))}
+            <span className="text-white/25 text-[10px] ml-1">+{pack.gachaPokemon.length - 4 > 0 ? pack.gachaPokemon.length - 4 : '...'}</span>
+          </div>
+        )}
+
+        {/* CTA */}
+        <button
+          className="block w-full text-center px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border cursor-pointer"
+          style={{ color: "white", borderColor: `${pack.color}35`, background: `${pack.color}18` }}
+          onClick={(e) => { e.stopPropagation(); onOpenDetail(); }}
+        >
+          Voir le contenu
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ─── Pack Detail Modal ───
+function PackModal({ pack, onClose }: { pack: typeof PACKS[0]; onClose: () => void }) {
+  // Close on Escape
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", handleKey);
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", handleKey); document.body.style.overflow = ""; };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+      {/* Modal */}
+      <div
+        className="relative max-w-lg w-full max-h-[90vh] overflow-y-auto rounded-3xl border p-6 md:p-8"
+        style={{
+          borderColor: `${pack.color}30`,
+          background: `linear-gradient(160deg, #0a0a1a 0%, #050510 100%)`,
+          boxShadow: `0 30px 100px -20px ${pack.color}20`,
+          animation: 'modal-in 0.3s ease-out',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button onClick={onClose} className="absolute top-4 right-4 text-white/30 hover:text-white transition-colors cursor-pointer">
+          <svg className="w-6 h-6" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"/></svg>
+        </button>
+
+        {/* Glow */}
+        <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full blur-[100px] pointer-events-none" style={{ background: `${pack.color}15` }} />
+
+        <div className="relative z-10">
+          {/* Header: sprite + name + price */}
+          <div className="flex items-center gap-5 mb-6">
+            <div className="relative shrink-0">
+              {"shiny" in pack && pack.shiny && (
+                <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full shiny-shimmer" style={{ background: `conic-gradient(from 0deg, transparent, ${pack.color}40, transparent, ${pack.color}20, transparent)` }} />
+                </div>
+              )}
+              <img
+                src={SPRITE(pack.sprite)}
+                alt={pack.name}
+                className="w-24 h-24 object-contain"
+                style={{ filter: `drop-shadow(0 0 20px ${pack.color}50)` }}
+                draggable={false}
+              />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <h3 className="text-2xl font-bold text-white">{pack.name}</h3>
+                {pack.vip && (
+                  <span className="flex items-center gap-1 px-2 py-0.5 bg-purple-500/20 border border-purple-500/40 rounded-full text-purple-200 text-[10px] font-bold">
+                    <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    +{pack.vip}
+                  </span>
+                )}
+              </div>
+              <p className="text-white/40 text-sm mb-2">{pack.tagline}</p>
+              <p className="text-2xl font-bold" style={{ color: pack.color }}>{pack.price}</p>
+            </div>
+          </div>
+
+          {/* Items section */}
+          <div className="mb-6">
+            <h4 className="text-white/50 text-xs uppercase tracking-wider mb-3 font-medium">Contenu du pack</h4>
+            <div className="grid grid-cols-2 gap-2">
+              {pack.items.map((item, i) => (
+                <div key={i} className="flex items-center gap-2.5 px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02]">
+                  <span className="text-base">{item.icon}</span>
+                  <span className="text-white/70 text-sm">{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Rewards section */}
+          <div className="mb-6 rounded-2xl p-4 border" style={{ borderColor: `${pack.color}20`, background: `${pack.color}06` }}>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xl">🎰</span>
+              <div>
+                <p className="text-white text-sm font-semibold">{pack.gacha}</p>
+                {pack.jackpot && (
+                  <p className="text-xs" style={{ color: pack.color }}>Jackpot : {pack.jackpot} ✨</p>
+                )}
+              </div>
+            </div>
+
+            {/* Pokémon grid */}
+            {pack.gachaPokemon.length > 0 && (
+              <>
+                <h4 className="text-white/40 text-[10px] uppercase tracking-wider mb-2 font-medium">Pokémon obtenables</h4>
+                <div className="grid grid-cols-3 gap-2">
+                  {pack.gachaPokemon.map((p, i) => (
+                    <div key={i} className="flex flex-col items-center gap-1 p-2 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
+                      <img
+                        src={SPRITE(p.sprite)}
+                        alt={p.name}
+                        className="w-14 h-14 object-contain"
+                        style={{ filter: `drop-shadow(0 0 8px ${pack.color}30)` }}
+                        loading="lazy"
+                        draggable={false}
+                      />
+                      <span className="text-white/60 text-[10px] font-medium text-center">{p.name}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-white/20 text-[10px] mt-2 text-center">Et bien d&apos;autres...</p>
+              </>
+            )}
+          </div>
+
+          {/* CTA */}
+          <a
+            href={pack.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full text-center px-6 py-3.5 rounded-full font-semibold transition-all duration-300 border text-white"
+            style={{
+              borderColor: `${pack.color}40`,
+              background: `${pack.color}25`,
+              boxShadow: `0 8px 30px -8px ${pack.color}30`,
+            }}
+          >
+            Acheter — {pack.price}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BoutiqueSection() {
+  const [paused, setPaused] = useState(false);
+  const [selectedPack, setSelectedPack] = useState<typeof PACKS[0] | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <section id="boutique" className="relative py-32 px-6">
+      <div className="max-w-5xl mx-auto">
+        <p className="text-sm uppercase tracking-[0.3em] text-purple-400/60 mb-4 font-medium text-center">Shop</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Boutique</h2>
+        <p className="text-white/40 mb-12 text-center">Packs exclusifs, clés et avantages VIP</p>
+
+        {/* ── Rewards Reel ── */}
+        <GachaReel />
+
+        {/* ── Infinite scrolling carousel ── */}
+        <div
+          className="relative overflow-hidden mb-16"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-[#050510] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-[#050510] to-transparent pointer-events-none" />
+
+          <div
+            ref={scrollRef}
+            className="flex gap-6"
+            style={{
+              animation: `marquee-scroll 35s linear infinite`,
+              animationPlayState: paused ? 'paused' : 'running',
+              width: 'max-content',
+            }}
+          >
+            {[...SHOP_PACKS, ...SHOP_PACKS].map((pack, i) => (
+              <PackCard key={`${pack.id}-${i}`} pack={pack} onOpenDetail={() => setSelectedPack(pack)} />
+            ))}
+          </div>
+        </div>
+
+        {/* ── VIP Card (always visible) ── */}
+        <div className="max-w-2xl mx-auto">
+          <div
+            className="relative overflow-hidden rounded-3xl border backdrop-blur-xl p-8 md:p-10 shadow-2xl"
+            style={{
+              borderColor: `${VIP_PACK.color}30`,
+              background: `linear-gradient(135deg, ${VIP_PACK.color}08 0%, ${VIP_PACK.color}03 50%, transparent 100%)`,
+              boxShadow: `0 25px 80px -20px ${VIP_PACK.color}12, 0 0 60px ${VIP_PACK.color}06`,
+            }}
+          >
+            {/* Glow */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-[100px] pointer-events-none" style={{ background: `${VIP_PACK.color}18` }} />
+
+            <div className="relative z-10 flex flex-col md:flex-row gap-8 md:gap-10 items-center">
+              {/* Left: Lucario + info */}
+              <div className="flex-1">
+                <div className="flex items-center gap-4 mb-5">
+                  <img
+                    src={SPRITE(VIP_PACK.sprite)}
+                    alt="VIP"
+                    className="w-20 h-20 object-contain"
+                    style={{ filter: `drop-shadow(0 0 20px ${VIP_PACK.color}40)` }}
+                    draggable={false}
+                  />
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-2xl md:text-3xl font-bold text-white">Grade VIP</h3>
+                      <span className="px-2 py-0.5 bg-yellow-500/15 border border-yellow-500/30 rounded text-yellow-300 text-[10px] font-bold uppercase">Premium</span>
+                    </div>
+                    <p className="text-white/40 text-sm">Deviens un dresseur d&apos;élite</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  {VIP_PACK.items.map((item, i) => (
+                    <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/5 bg-white/[0.02]">
+                      <span className="text-base">{item.icon}</span>
+                      <span className="text-white/60 text-sm">{item.text}</span>
+                    </div>
+                  ))}
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-xl border border-purple-500/20 bg-purple-500/5">
+                    <span className="text-base">💬</span>
+                    <span className="text-purple-300 text-sm">{VIP_PACK.gacha}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: price + CTA */}
+              <div className="flex flex-col items-center md:w-48 shrink-0">
+                <p className="text-3xl md:text-4xl font-bold text-white mb-0.5">4.99&euro;<span className="text-white/40 text-base font-normal">/mois</span></p>
+                <p className="text-white/25 text-xs mb-5">Renouvellement auto</p>
+                <a
+                  href={VIP_PACK.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center px-6 py-3.5 rounded-full font-semibold transition-all duration-300 border block text-white"
+                  style={{ borderColor: `${VIP_PACK.color}40`, background: `${VIP_PACK.color}20` }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = `${VIP_PACK.color}35`;
+                    e.currentTarget.style.boxShadow = `0 10px 40px -10px ${VIP_PACK.color}30`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = `${VIP_PACK.color}20`;
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  S&apos;abonner
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Pack detail modal */}
+      {selectedPack && <PackModal pack={selectedPack} onClose={() => setSelectedPack(null)} />}
+
+      {/* CSS animations */}
+      <style>{`
+        @keyframes marquee-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes gacha-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes gacha-catch-badge {
+          0% { opacity: 0; transform: translateX(-50%) translateY(8px) scale(0.7); }
+          100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+        }
+        @keyframes boutique-sparkle {
+          0%, 100% { opacity: 0; transform: scale(0.5) translateY(0); }
+          50% { opacity: 0.5; transform: scale(1.5) translateY(-8px); }
+        }
+        @keyframes modal-in {
+          from { opacity: 0; transform: scale(0.95) translateY(10px); }
+          to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes shiny-rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .shiny-shimmer {
+          animation: shiny-rotate 4s linear infinite;
+          opacity: 0.4;
+        }
+      `}</style>
+    </section>
+  );
+}
 
 export default function Home() {
   const [active, setActive] = useState("hero");
@@ -147,7 +856,7 @@ export default function Home() {
         setActive("discord");
         return;
       }
-      const sections = ["discord", "vip", "rejoindre", "wiki", "presentation"];
+      const sections = ["discord", "boutique", "rejoindre", "wiki", "presentation"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= 200) {
@@ -338,52 +1047,8 @@ export default function Home() {
         <ParallaxImage src="/pika.webp" alt="Pikachu" speed={-0.15} className="absolute -left-[300px] md:-left-[500px] top-1/2 w-[600px] md:w-[1200px] pointer-events-none drop-shadow-[0_0_40px_rgba(168,85,247,0.3)]" />
       </div>
 
-      {/* VIP */}
-      <section id="vip" className="relative py-32 px-6">
-        <div className="max-w-sm mx-auto">
-          <p className="text-sm uppercase tracking-[0.3em] text-purple-400/60 mb-4 font-medium text-center">Premium</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Grade VIP</h2>
-          <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl shadow-purple-500/5 hover:border-white/20 transition-all duration-500">
-            <div className="text-center mb-8">
-              <span className="inline-block px-4 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-300 text-sm font-medium mb-4">VIP Trainer</span>
-              <p className="text-white/40 mt-2">Deviens un dresseur d&apos;élite sur Cobblenite</p>
-              <p className="text-white text-3xl font-bold mt-4">4.99&euro;<span className="text-white/40 text-base font-normal">/mois</span></p>
-            </div>
-            <ul className="space-y-4 text-white/60 mb-10">
-              <li className="flex items-center gap-3">
-                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#facc15" opacity="0.2"/><text x="10" y="14" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#facc15">x2</text></svg>
-                XP Pokémon x2 sur tous les combats
-              </li>
-              <li className="flex items-center gap-3">
-                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#7c3aed"/><line x1="3" y1="10" x2="17" y2="10" stroke="#1a1a2e" strokeWidth="2"/><circle cx="10" cy="10" r="3" fill="white" stroke="#1a1a2e" strokeWidth="1.5"/><path d="M 5 4 Q 10 0 15 4" fill="none" stroke="#c084fc" strokeWidth="1.5"/></svg>
-                1 Master Ball par semaine
-              </li>
-              <li className="flex items-center gap-3">
-                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#ef4444" /><circle cx="10" cy="10" r="9" fill="url(#pokeball)"/><defs><linearGradient id="pokeball" x1="0" y1="0" x2="0" y2="1"><stop offset="50%" stopColor="#ef4444"/><stop offset="50%" stopColor="white"/></linearGradient></defs><line x1="1" y1="10" x2="19" y2="10" stroke="#1a1a2e" strokeWidth="2"/><circle cx="10" cy="10" r="3" fill="white" stroke="#1a1a2e" strokeWidth="1.5"/></svg>
-                25 Poké Balls par jour
-              </li>
-              <li className="flex items-center gap-3">
-                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="url(#ultraball)"/><defs><linearGradient id="ultraball" x1="0" y1="0" x2="0" y2="1"><stop offset="50%" stopColor="#1a1a2e"/><stop offset="50%" stopColor="white"/></linearGradient></defs><line x1="1" y1="10" x2="19" y2="10" stroke="#facc15" strokeWidth="2"/><circle cx="10" cy="10" r="3" fill="white" stroke="#facc15" strokeWidth="1.5"/></svg>
-                5 Ultra Balls par jour
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="inline-block px-2 py-0.5 bg-yellow-500/20 border border-yellow-500/30 rounded text-yellow-300 text-xs font-bold font-mono tracking-wider shadow-[0_0_8px_rgba(234,179,8,0.3)]">VIP</span> Préfixe en chat
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="inline-block px-2.5 py-0.5 bg-blue-500/20 border border-blue-500/30 rounded text-blue-300 text-xs font-bold font-mono shadow-[0_0_8px_rgba(59,130,246,0.3)]">60</span> Slots de PC supplémentaires
-              </li>
-            </ul>
-            <a
-              href={TEBEX_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 backdrop-blur-md text-white rounded-full font-medium transition-all duration-300 border border-white/15 hover:border-white/30 hover:shadow-lg hover:shadow-purple-500/10"
-            >
-              S&apos;abonner
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Boutique */}
+      <BoutiqueSection />
 
       {/* Pokemon 3 - avant Discord */}
       <div className="relative h-0 max-w-7xl mx-auto">
@@ -418,6 +1083,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative border-t border-white/5 py-10 px-6 text-center text-sm text-white/20">
         &copy; {new Date().getFullYear()} Cobblenite. Tous droits réservés.
+        <br />
+        <span className="text-white/10 text-xs">
+          Serveur Minecraft non officiel. Non affilié à Pokémon, Nintendo, Mojang ou Cobblemon.
+        </span>
       </footer>
     </main>
   );
