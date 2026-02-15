@@ -161,7 +161,6 @@ const PACKS = [
       { icon: "🏠", text: "3 Homes (au lieu de 1)" },
       { icon: "⚡", text: "Cooldowns réduits (/tpa, /rtp, /back)" },
       { icon: "💀", text: "/back après la mort" },
-      { icon: "📦", text: "PC Boxes supplémentaires" },
       { icon: "🛡️", text: "50 000 blocs de claims (x5)" },
       { icon: "🎆", text: "Particules cosmétiques" },
     ],
