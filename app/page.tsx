@@ -356,7 +356,7 @@ function ServerStatus() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch(`https://api.mcsrvstat.us/2/79.137.34.10:25565`);
+        const res = await fetch(`/api/status`);
         const data = await res.json();
         setOnline(data.online);
       } catch {
