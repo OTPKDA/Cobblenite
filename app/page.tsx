@@ -426,7 +426,6 @@ function CopyButton({ text }: { text: string }) {
 }
 
 const LAUNCHER_URL = "http://79.137.34.10/cobblenite/Cobblenite-Launcher-setup-1.0.0.exe";
-const CURSEFORGE_URL = "https://www.curseforge.com/minecraft/modpacks/cobblenite";
 
 const NAV_ITEMS = [
   { id: "hero", label: "Cobblenite", href: "#" },
@@ -1053,16 +1052,6 @@ export default function Home() {
             <h3 className="text-xl font-bold text-white mb-2">Installer les mods</h3>
             <p className="text-white/35 text-sm mb-6">Choisis ta méthode pour installer le modpack Cobblenite</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href={CURSEFORGE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-3 px-6 py-3.5 bg-[#F16436]/15 hover:bg-[#F16436]/25 backdrop-blur-md text-white rounded-full font-semibold transition-all duration-300 border border-[#F16436]/30 hover:border-[#F16436]/50 hover:shadow-lg hover:shadow-[#F16436]/15"
-              >
-                <svg className="w-5 h-5 text-[#F16436]" viewBox="0 0 24 24" fill="currentColor"><path d="M18.326 9.2h1.294l.863-1.2H5.394l-.408 1.2h7.39c.975 0 2.39.564 3.16 1.489h-5.49l-.862 1.2h7.013c.261.594.375 1.24.375 1.906 0 2.56-1.89 4.605-4.42 4.605H8.59l-.863 1.2h4.453c3.615 0 6.55-2.985 6.55-6.605 0-.715-.123-1.433-.404-2.595z"/></svg>
-                CurseForge
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-              </a>
               <a
                 href={LAUNCHER_URL}
                 className="group flex items-center gap-3 px-6 py-3.5 bg-purple-500/15 hover:bg-purple-500/25 backdrop-blur-md text-white rounded-full font-semibold transition-all duration-300 border border-purple-500/30 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/15"
