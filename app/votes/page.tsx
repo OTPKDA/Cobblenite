@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Votes — Cobblenite",
   description:
-    "Vote pour Cobblenite et gagne des cles pour ouvrir des crates avec des Pokemon, objets rares et legendaires !",
+    "Vote pour Cobblenite et gagne des clés pour ouvrir des crates avec des Pokémon, objets rares et légendaires !",
 };
 
 // ─── Types ───
-type Rarity = "Commun" | "Rare" | "Epique" | "Mythique" | "Legendaire";
+type Rarity = "Commun" | "Rare" | "Épique" | "Mythique" | "Légendaire";
 
 interface LootItem {
   name: string;
@@ -35,9 +35,9 @@ interface Crate {
 const RARITY_COLORS: Record<Rarity, string> = {
   Commun: "#9ca3af",
   Rare: "#a78bfa",
-  Epique: "#fbbf24",
+  "Épique": "#fbbf24",
   Mythique: "#f97316",
-  Legendaire: "#ef4444",
+  "Légendaire": "#ef4444",
 };
 
 // ─── Vote sites ───
@@ -76,7 +76,7 @@ const CRATES: Crate[] = [
     command: "/vote1",
     color: "#4ade80",
     colorDim: "rgba(74, 222, 128, 0.15)",
-    description: "Crate polyvalente pour bien demarrer",
+    description: "Crate polyvalente pour bien démarrer",
     tiers: [
       {
         rarity: "Commun",
@@ -121,7 +121,7 @@ const CRATES: Crate[] = [
         ],
       },
       {
-        rarity: "Epique",
+        rarity: "Épique",
         chance: "10%",
         items: [
           { name: "1 Master Ball" },
@@ -139,7 +139,7 @@ const CRATES: Crate[] = [
         rarity: "Mythique",
         chance: "5%",
         items: [
-          { name: "Shiny Aleatoire Nv.30", pokemon: true, shiny: true },
+          { name: "Shiny Aléatoire Nv.30", pokemon: true, shiny: true },
           { name: "7 jours VIP" },
           { name: "2 Master Balls" },
           { name: "Minidraco Nv.35", pokemon: true },
@@ -151,7 +151,7 @@ const CRATES: Crate[] = [
         ],
       },
       {
-        rarity: "Legendaire",
+        rarity: "Légendaire",
         chance: "0.5%",
         items: [
           { name: "Artikodin Nv.50", pokemon: true },
@@ -173,7 +173,7 @@ const CRATES: Crate[] = [
     command: "/vote2",
     color: "#3b82f6",
     colorDim: "rgba(59, 130, 246, 0.15)",
-    description: "Crate aquatique aux tresors des profondeurs",
+    description: "Crate aquatique aux trésors des profondeurs",
     tiers: [
       {
         rarity: "Commun",
@@ -218,7 +218,7 @@ const CRATES: Crate[] = [
         ],
       },
       {
-        rarity: "Epique",
+        rarity: "Épique",
         chance: "10%",
         items: [
           { name: "1 Master Ball" },
@@ -236,7 +236,7 @@ const CRATES: Crate[] = [
         rarity: "Mythique",
         chance: "5%",
         items: [
-          { name: "Shiny Aleatoire Nv.30", pokemon: true, shiny: true },
+          { name: "Shiny Aléatoire Nv.30", pokemon: true, shiny: true },
           { name: "7 jours VIP" },
           { name: "2 Master Balls" },
           { name: "Embrylex Nv.35", pokemon: true },
@@ -248,7 +248,7 @@ const CRATES: Crate[] = [
         ],
       },
       {
-        rarity: "Legendaire",
+        rarity: "Légendaire",
         chance: "0.5%",
         items: [
           { name: "Electhor Nv.50", pokemon: true },
@@ -270,7 +270,7 @@ const CRATES: Crate[] = [
     command: "/vote3",
     color: "#fbbf24",
     colorDim: "rgba(251, 191, 36, 0.15)",
-    description: "Crate sombre regorgeant de mysteres",
+    description: "Crate sombre regorgeant de mystères",
     tiers: [
       {
         rarity: "Commun",
@@ -315,7 +315,7 @@ const CRATES: Crate[] = [
         ],
       },
       {
-        rarity: "Epique",
+        rarity: "Épique",
         chance: "10%",
         items: [
           { name: "1 Master Ball" },
@@ -333,7 +333,7 @@ const CRATES: Crate[] = [
         rarity: "Mythique",
         chance: "5%",
         items: [
-          { name: "Shiny Aleatoire Nv.30", pokemon: true, shiny: true },
+          { name: "Shiny Aléatoire Nv.30", pokemon: true, shiny: true },
           { name: "7 jours VIP" },
           { name: "2 Master Balls" },
           { name: "Terhal Nv.35", pokemon: true },
@@ -345,7 +345,7 @@ const CRATES: Crate[] = [
         ],
       },
       {
-        rarity: "Legendaire",
+        rarity: "Légendaire",
         chance: "0.5%",
         items: [
           { name: "Sulfura Nv.50", pokemon: true },
@@ -367,7 +367,7 @@ const CRATES: Crate[] = [
     command: "/vote4",
     color: "#f97316",
     colorDim: "rgba(249, 115, 22, 0.15)",
-    description: "Crate luxueuse aux recompenses precieuses",
+    description: "Crate luxueuse aux récompenses précieuses",
     tiers: [
       {
         rarity: "Commun",
@@ -412,7 +412,7 @@ const CRATES: Crate[] = [
         ],
       },
       {
-        rarity: "Epique",
+        rarity: "Épique",
         chance: "10%",
         items: [
           { name: "1 Master Ball" },
@@ -430,7 +430,7 @@ const CRATES: Crate[] = [
         rarity: "Mythique",
         chance: "5%",
         items: [
-          { name: "Shiny Aleatoire Nv.30", pokemon: true, shiny: true },
+          { name: "Shiny Aléatoire Nv.30", pokemon: true, shiny: true },
           { name: "7 jours VIP" },
           { name: "2 Master Balls" },
           { name: "Griknot Nv.35", pokemon: true },
@@ -442,7 +442,7 @@ const CRATES: Crate[] = [
         ],
       },
       {
-        rarity: "Legendaire",
+        rarity: "Légendaire",
         chance: "0.5%",
         items: [
           { name: "Suicune Nv.50", pokemon: true },
@@ -590,20 +590,20 @@ export default function VotesPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Recompenses de Vote
+              Récompenses de Vote
             </span>
           </h1>
           <p className="text-white/60 text-lg max-w-2xl mx-auto mb-6">
             Soutiens Cobblenite en votant sur les sites partenaires !
-            Chaque vote te donne <span className="text-white font-semibold">1 cle</span> pour
+            Chaque vote te donne <span className="text-white font-semibold">1 clé</span> pour
             ouvrir la crate correspondante.
           </p>
           <div className="flex flex-wrap justify-center gap-2 text-sm text-white/40">
             <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
-              1 vote = 1 cle
+              1 vote = 1 clé
             </span>
             <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
-              116 Pokemon uniques
+              116 Pokémon uniques
             </span>
           </div>
         </div>
@@ -665,7 +665,7 @@ export default function VotesPage() {
           <p className="mt-1">
             Utilise{" "}
             <span className="font-mono text-white/40">/vote</span>{" "}
-            en jeu pour acceder aux liens de vote.
+            en jeu pour accéder aux liens de vote.
           </p>
         </div>
       </div>
