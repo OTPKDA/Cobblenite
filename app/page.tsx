@@ -425,7 +425,7 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
-const LAUNCHER_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.0.0/Cobblenite-Launcher-setup-1.0.0.exe";
+const LAUNCHER_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.1.0/Cobblenite-Launcher-setup-1.1.0.exe";
 
 const NAV_ITEMS = [
   { id: "hero", label: "Cobblenite", href: "#" },
