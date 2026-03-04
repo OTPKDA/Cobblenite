@@ -426,6 +426,8 @@ function CopyButton({ text }: { text: string }) {
 }
 
 const LAUNCHER_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.1.0/Cobblenite-Launcher-setup-1.1.0.exe";
+const LAUNCHER_MAC_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.0.1/Cobblenite-Launcher-1.0.0-x64.dmg";
+const LAUNCHER_LINUX_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.0.1/Cobblenite-Launcher-1.0.0.AppImage";
 
 const NAV_ITEMS = [
   { id: "hero", label: "Cobblenite", href: "#" },
@@ -1057,7 +1059,23 @@ export default function Home() {
                 className="group flex items-center gap-3 px-6 py-3.5 bg-purple-500/15 hover:bg-purple-500/25 backdrop-blur-md text-white rounded-full font-semibold transition-all duration-300 border border-purple-500/30 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/15"
               >
                 <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                Launcher (.exe)
+                Windows (.exe)
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+              </a>
+              <a
+                href={LAUNCHER_MAC_URL}
+                className="group flex items-center gap-3 px-6 py-3.5 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white rounded-full font-semibold transition-all duration-300 border border-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-white/5"
+              >
+                <svg className="w-5 h-5 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                macOS (.dmg)
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+              </a>
+              <a
+                href={LAUNCHER_LINUX_URL}
+                className="group flex items-center gap-3 px-6 py-3.5 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white rounded-full font-semibold transition-all duration-300 border border-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-white/5"
+              >
+                <svg className="w-5 h-5 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                Linux (.AppImage)
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
               </a>
             </div>
