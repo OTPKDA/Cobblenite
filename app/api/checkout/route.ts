@@ -19,11 +19,11 @@ const DUPLICATABLE_PACKS = new Set([
 
 // Upsells valides par type de pack
 const VALID_UPSELLS: Record<string, Set<string>> = {
-  "pack-starter": new Set(["upsell-choose-pokemon", "upsell-ev-max", "upsell-iv", "upsell-shiny", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
-  "pack-combat": new Set(["upsell-choose-pokemon", "upsell-ev-max", "upsell-iv", "upsell-shiny", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
-  "pack-shiny": new Set(["upsell-choose-pokemon", "upsell-ev-max", "upsell-iv", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
-  "pack-legendaire": new Set(["upsell-choose-pokemon", "upsell-ev-max", "upsell-iv", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
-  "pack-legendaire-shiny": new Set(["upsell-choose-pokemon", "upsell-ev-max", "upsell-iv", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
+  "pack-starter": new Set(["upsell-choose-pokemon", "upsell-iv", "upsell-shiny", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
+  "pack-combat": new Set(["upsell-choose-pokemon", "upsell-iv", "upsell-shiny", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
+  "pack-shiny": new Set(["upsell-choose-pokemon", "upsell-iv", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
+  "pack-legendaire": new Set(["upsell-choose-pokemon", "upsell-iv", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
+  "pack-legendaire-shiny": new Set(["upsell-choose-pokemon", "upsell-iv", "upsell-double-cd", "upsell-gacha5", "upsell-vip-extend"]),
 };
 
 // Catalogue des produits avec prix en centimes
@@ -84,7 +84,6 @@ const PRODUCTS: Record<string, { name: string; price: number; description: strin
   "fossil-parfait": { name: "Fossile Parfait", price: 999, description: "Talent Cache + Shiny + 6IV - Le combo ultime" },
   // Options upsell
   "upsell-choose-pokemon": { name: "Choisis ton Pokemon", price: 100, description: "Choisis ton Pokemon au lieu d'un aleatoire" },
-  "upsell-ev-max": { name: "EV Training Max", price: 149, description: "Ton Pokemon arrive avec les EVs au max" },
   "upsell-shiny": { name: "Shiny Boost", price: 299, description: "Ton Pokemon devient shiny" },
   "upsell-iv": { name: "IV Parfaits", price: 199, description: "Ton Pokemon passe 6IV parfaits" },
   "upsell-double-cd": { name: "Double CobbleDollars", price: 149, description: "x2 les CD du pack" },

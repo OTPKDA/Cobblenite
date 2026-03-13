@@ -29,7 +29,6 @@ const PRODUCT_NAMES: Record<string, string> = {
   "fossil-maxiv": "Fossile Max IV",
   "fossil-parfait": "Fossile Parfait",
   "upsell-choose-pokemon": "Choisis ton Pokemon",
-  "upsell-ev-max": "EV Training Max",
   "upsell-shiny": "Shiny Boost",
   "upsell-iv": "IV Parfaits",
   "upsell-double-cd": "Double CobbleDollars",

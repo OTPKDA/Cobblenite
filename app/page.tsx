@@ -629,7 +629,6 @@ const SHOP_FOSSILS: ShopProduct[] = [
 const SHOP_UPSELLS: ShopUpsell[] = [
   { id: "upsell-choose-pokemon", name: "Choisis ton Pokemon", price: 1.00, realPrice: 2.99, description: "Choisis ton Pokemon au lieu d'un aleatoire" },
   { id: "upsell-double-cd", name: "Double CobbleDollars", price: 1.49, realPrice: 1.99, description: "x2 les CobbleDollars du pack" },
-  { id: "upsell-ev-max", name: "EV Training Max", price: 1.49, realPrice: 4.99, description: "Ton Pokemon arrive avec les EVs au max" },
   { id: "upsell-iv", name: "IV Parfaits", price: 1.99, realPrice: 5.99, description: "Ton Pokemon passe 6IV parfaits" },
   { id: "upsell-vip-extend", name: "VIP Etendu", price: 2.49, realPrice: 4.99, description: "Double la duree VIP du pack" },
   { id: "upsell-shiny", name: "Version Shiny", price: 2.99, realPrice: 9.99, description: "Ton Pokemon sera shiny (chromatique) garanti" },
@@ -788,7 +787,7 @@ function getCrossSells(cart: ShopCartItem[]): CrossSell[] {
 
 const NO_UPSELL_PACKS = new Set(["vip-trainer", "vip-plus"]);
 
-const POKEMON_UPSELLS = new Set(["upsell-choose-pokemon", "upsell-ev-max", "upsell-iv", "upsell-shiny"]);
+const POKEMON_UPSELLS = new Set(["upsell-choose-pokemon", "upsell-iv", "upsell-shiny"]);
 
 function getUpsellsForPack(pack: ShopProduct): ShopUpsell[] {
   if (NO_UPSELL_PACKS.has(pack.id)) return [];
