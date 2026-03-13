@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   description: "Rejoins Cobblenite, le serveur Minecraft Cobblemon francophone. 1000+ Pokemon, Ligue PvE ranked, Mega-Evolutions, Raids, Voice Chat et bien plus. Capture, entraine et combats des Pokemon avec tes amis !",
   keywords: ["cobblenite", "cobblemon", "minecraft", "serveur", "pokemon", "francophone", "france", "fabric", "modde"],
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/favicon.webp",
+    apple: "/favicon.webp",
   },
   openGraph: {
     title: "Cobblenite — Serveur Minecraft Cobblemon",

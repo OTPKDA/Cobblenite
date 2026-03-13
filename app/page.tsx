@@ -37,7 +37,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     tagline: "Deviens un dresseur reconnu",
     price: 4.99,
     color: "#a78bfa",
-    customImage: "/vip-pass.png",
+    customImage: "/vip-pass.webp",
     badge: "VIP",
     category: "pack",
     items: [
@@ -64,7 +64,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     tagline: "L'elite des dresseurs",
     price: 8.99,
     color: "#fbbf24",
-    customImage: "/vip-plus.png",
+    customImage: "/vip-plus.webp",
     badge: "VIP+",
     category: "pack",
     items: [
@@ -95,7 +95,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     tagline: "Tout pour bien lancer ton aventure",
     price: 6.99,
     color: "#4ade80",
-    customImage: "/kit-dresseur.png",
+    customImage: "/kit-dresseur.webp",
     category: "pack",
     items: [
       "1 Pokemon aleatoire (pool ci-dessous)",
@@ -183,7 +183,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     oldPrice: 14.99,
     color: "#ef4444",
     sprite: "blaziken",
-    customImage: "/pack-arena.png",
+    customImage: "/pack-arena.webp",
     category: "pack",
     items: [
       "1 Pokemon Combat aleatoire Niv.30",
@@ -246,7 +246,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     price: 24.99,
     oldPrice: 29.99,
     color: "#22d3ee",
-    customImage: "/etoile-chromee.png",
+    customImage: "/etoile-chromee.webp",
     sprite: "umbreon",
     badge: "Populaire",
     category: "pack",
@@ -325,7 +325,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     price: 39.99,
     oldPrice: 49.99,
     color: "#fbbf24",
-    customImage: "/coffre-champion.png",
+    customImage: "/coffre-champion.webp",
     sprite: "mewtwo",
     category: "pack",
     items: [
@@ -389,7 +389,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     price: 49.99,
     oldPrice: 59.99,
     color: "#f472b6",
-    customImage: "/relique-ancestrale.png",
+    customImage: "/relique-ancestrale.webp",
     sprite: "rayquaza",
     badge: "Ultime",
     category: "pack",
@@ -451,20 +451,20 @@ const SHOP_PRODUCTS: ShopProduct[] = [
 ];
 
 const SHOP_CD: ShopProduct[] = [
-  { id: "cd-5000", name: "5 000", price: 1.99, color: "#fbbf24", category: "cobbledollars", items: ["5 000 CobbleDollars"], customImage: "/cd-5000.png" },
-  { id: "cd-15000", name: "15 000", price: 4.99, color: "#fbbf24", category: "cobbledollars", items: ["15 000 CobbleDollars"], discount: "-17%", customImage: "/cd-15000.png" },
-  { id: "cd-50000", name: "50 000", price: 12.99, color: "#fbbf24", category: "cobbledollars", items: ["50 000 CobbleDollars"], discount: "-35%", customImage: "/cd-50000.png" },
-  { id: "cd-100000", name: "100 000", price: 19.99, color: "#fbbf24", category: "cobbledollars", items: ["100 000 CobbleDollars"], discount: "-50%", badge: "Best seller", customImage: "/cd-100000.png" },
-  { id: "cd-250000", name: "250 000", price: 39.99, color: "#fbbf24", category: "cobbledollars", items: ["250 000 CobbleDollars"], discount: "-60%", customImage: "/cd-250000.png" },
-  { id: "cd-500000", name: "500 000", price: 69.99, color: "#fbbf24", category: "cobbledollars", items: ["500 000 CobbleDollars"], discount: "-65%", badge: "Meilleure offre", customImage: "/cd-500000.png" },
+  { id: "cd-5000", name: "5 000", price: 1.99, color: "#fbbf24", category: "cobbledollars", items: ["5 000 CobbleDollars"], customImage: "/cd-5000.webp" },
+  { id: "cd-15000", name: "15 000", price: 4.99, color: "#fbbf24", category: "cobbledollars", items: ["15 000 CobbleDollars"], discount: "-17%", customImage: "/cd-15000.webp" },
+  { id: "cd-50000", name: "50 000", price: 12.99, color: "#fbbf24", category: "cobbledollars", items: ["50 000 CobbleDollars"], discount: "-35%", customImage: "/cd-50000.webp" },
+  { id: "cd-100000", name: "100 000", price: 19.99, color: "#fbbf24", category: "cobbledollars", items: ["100 000 CobbleDollars"], discount: "-50%", badge: "Best seller", customImage: "/cd-100000.webp" },
+  { id: "cd-250000", name: "250 000", price: 39.99, color: "#fbbf24", category: "cobbledollars", items: ["250 000 CobbleDollars"], discount: "-60%", customImage: "/cd-250000.webp" },
+  { id: "cd-500000", name: "500 000", price: 69.99, color: "#fbbf24", category: "cobbledollars", items: ["500 000 CobbleDollars"], discount: "-65%", badge: "Meilleure offre", customImage: "/cd-500000.webp" },
 ];
 
 const SHOP_GACHA: ShopProduct[] = [
-  { id: "gacha-1", name: "1 Jeton", tagline: "Tente ta chance une fois", price: 1.99, color: "#c084fc", category: "gacha", items: ["1 tirage dans la machine Gacha", "Pokemon aleatoire parmi 4 pools"], customImage: "/gacha-1.png" },
-  { id: "gacha-5", name: "5 Jetons", tagline: "Plus de tirages, plus de chances", price: 7.99, color: "#c084fc", category: "gacha", items: ["5 tirages Gacha", "Economise 20% vs achat unitaire"], discount: "-20%", customImage: "/gacha-5.png" },
-  { id: "gacha-10", name: "10 Jetons", tagline: "Le choix des dresseurs malins", price: 14.99, color: "#c084fc", category: "gacha", items: ["10 tirages Gacha", "Shinys, legendaires, 6IV possibles"], discount: "-25%", badge: "Populaire", customImage: "/gacha-10.png" },
-  { id: "gacha-25", name: "25 Jetons", tagline: "Chasse intensive", price: 29.99, color: "#c084fc", category: "gacha", items: ["25 tirages Gacha", "Chances accrues de tomber sur un jackpot"], discount: "-40%", customImage: "/gacha-25.png" },
-  { id: "gacha-50", name: "50 Jetons", tagline: "Le graal du collectionneur", price: 49.99, color: "#c084fc", category: "gacha", items: ["50 tirages Gacha", "Meilleur rapport qualite-prix"], discount: "-50%", badge: "Meilleure offre", customImage: "/gacha-50.png" },
+  { id: "gacha-1", name: "1 Jeton", tagline: "Tente ta chance une fois", price: 1.99, color: "#c084fc", category: "gacha", items: ["1 tirage dans la machine Gacha", "Pokemon aleatoire parmi 4 pools"], customImage: "/gacha-1.webp" },
+  { id: "gacha-5", name: "5 Jetons", tagline: "Plus de tirages, plus de chances", price: 7.99, color: "#c084fc", category: "gacha", items: ["5 tirages Gacha", "Economise 20% vs achat unitaire"], discount: "-20%", customImage: "/gacha-5.webp" },
+  { id: "gacha-10", name: "10 Jetons", tagline: "Le choix des dresseurs malins", price: 14.99, color: "#c084fc", category: "gacha", items: ["10 tirages Gacha", "Shinys, legendaires, 6IV possibles"], discount: "-25%", badge: "Populaire", customImage: "/gacha-10.webp" },
+  { id: "gacha-25", name: "25 Jetons", tagline: "Chasse intensive", price: 29.99, color: "#c084fc", category: "gacha", items: ["25 tirages Gacha", "Chances accrues de tomber sur un jackpot"], discount: "-40%", customImage: "/gacha-25.webp" },
+  { id: "gacha-50", name: "50 Jetons", tagline: "Le graal du collectionneur", price: 49.99, color: "#c084fc", category: "gacha", items: ["50 tirages Gacha", "Meilleur rapport qualite-prix"], discount: "-50%", badge: "Meilleure offre", customImage: "/gacha-50.webp" },
 ];
 
 // ── Pools Gacha complets (Cobblemon 1.7.3 — ~1000 Pokemon) ──
@@ -620,10 +620,10 @@ const GACHA_POOLS = {
 };
 
 const SHOP_FOSSILS: ShopProduct[] = [
-  { id: "fossil-talent", name: "Fossile Talent Cache", tagline: "Deverrouille le potentiel cache", price: 3.99, color: "#2dd4bf", category: "fossile", items: ["Revele le talent cache de ton Pokemon", "Utilisable sur n'importe quel Pokemon", "Applique instantanement en jeu"], customImage: "/fossil-talent.png" },
-  { id: "fossil-shiny", name: "Fossile Shiny", tagline: "Rends-le chromatique", price: 4.99, color: "#f472b6", category: "fossile", items: ["Transforme ton Pokemon en shiny", "Fonctionne sur tous les Pokemon", "Garde les stats et mouvements"], badge: "Populaire", customImage: "/fossil-shiny.png" },
-  { id: "fossil-maxiv", name: "Fossile Max IV", tagline: "La perfection statistique", price: 3.99, color: "#60a5fa", category: "fossile", items: ["Passe les 6 IVs a 31 (parfaits)", "Ideal pour le PvP et les combats", "Compatible avec tous les Pokemon"], customImage: "/fossil-maxiv.png" },
-  { id: "fossil-parfait", name: "Fossile Parfait", tagline: "Le combo ultime tout-en-un", price: 9.99, color: "#fbbf24", category: "fossile", items: ["Talent Cache + Shiny + 6IV parfaits", "3 fossiles en 1 — economise 33%", "Le must-have pour ton Pokemon prefere"], badge: "Meilleure offre", customImage: "/fossil-parfait.png" },
+  { id: "fossil-talent", name: "Fossile Talent Cache", tagline: "Deverrouille le potentiel cache", price: 3.99, color: "#2dd4bf", category: "fossile", items: ["Revele le talent cache de ton Pokemon", "Utilisable sur n'importe quel Pokemon", "Applique instantanement en jeu"], customImage: "/fossil-talent.webp" },
+  { id: "fossil-shiny", name: "Fossile Shiny", tagline: "Rends-le chromatique", price: 4.99, color: "#f472b6", category: "fossile", items: ["Transforme ton Pokemon en shiny", "Fonctionne sur tous les Pokemon", "Garde les stats et mouvements"], badge: "Populaire", customImage: "/fossil-shiny.webp" },
+  { id: "fossil-maxiv", name: "Fossile Max IV", tagline: "La perfection statistique", price: 3.99, color: "#60a5fa", category: "fossile", items: ["Passe les 6 IVs a 31 (parfaits)", "Ideal pour le PvP et les combats", "Compatible avec tous les Pokemon"], customImage: "/fossil-maxiv.webp" },
+  { id: "fossil-parfait", name: "Fossile Parfait", tagline: "Le combo ultime tout-en-un", price: 9.99, color: "#fbbf24", category: "fossile", items: ["Talent Cache + Shiny + 6IV parfaits", "3 fossiles en 1 — economise 33%", "Le must-have pour ton Pokemon prefere"], badge: "Meilleure offre", customImage: "/fossil-parfait.webp" },
 ];
 
 const SHOP_UPSELLS: ShopUpsell[] = [
@@ -1611,17 +1611,17 @@ function BoutiqueSection() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {[
-                { key: "sauvage", name: "Rencontre Sauvage", cost: "1 jeton / pull", color: "emerald", img: "/banner-sauvage.png", pity: "Epique a 20 pulls", pool: GACHA_POOLS.sauvage, tiers: [
+                { key: "sauvage", name: "Rencontre Sauvage", cost: "1 jeton / pull", color: "emerald", img: "/banner-sauvage.webp", pity: "Epique a 20 pulls", pool: GACHA_POOLS.sauvage, tiers: [
                   { label: "Commun", rate: "70%", dotColor: "bg-white/40", textColor: "text-white/50", rateColor: "text-white/25", data: GACHA_POOLS.sauvage.commun },
                   { label: "Rare", rate: "25%", dotColor: "bg-blue-400", textColor: "text-blue-300", rateColor: "text-blue-300/40", data: GACHA_POOLS.sauvage.rare },
                   { label: "Epique", rate: "4.5%", dotColor: "bg-purple-400", textColor: "text-purple-300", rateColor: "text-purple-300/40", data: GACHA_POOLS.sauvage.epique },
                 ], jackpotRate: "0.5%", jackpotName: GACHA_POOLS.sauvage.jackpot[0] },
-                { key: "combat", name: "Arene des Champions", cost: "2 jetons / pull", color: "red", img: "/banner-combat.png", pity: "Elite a 15 pulls", pool: GACHA_POOLS.combat, tiers: [
+                { key: "combat", name: "Arene des Champions", cost: "2 jetons / pull", color: "red", img: "/banner-combat.webp", pity: "Elite a 15 pulls", pool: GACHA_POOLS.combat, tiers: [
                   { label: "Bon", rate: "60%", dotColor: "bg-white/40", textColor: "text-white/50", rateColor: "text-white/25", data: GACHA_POOLS.combat.bon },
                   { label: "Tres bon", rate: "30%", dotColor: "bg-blue-400", textColor: "text-blue-300", rateColor: "text-blue-300/40", data: GACHA_POOLS.combat.tresBon },
                   { label: "Elite", rate: "9.7%", dotColor: "bg-purple-400", textColor: "text-purple-300", rateColor: "text-purple-300/40", data: GACHA_POOLS.combat.elite },
                 ], jackpotRate: "0.3%", jackpotName: GACHA_POOLS.combat.jackpot[0] },
-                { key: "shiny", name: "Etoiles Chromees", cost: "3 jetons / pull", color: "pink", img: "/banner-shiny.png", pity: "Shiny epique a 10 pulls", pool: GACHA_POOLS.shiny, tiers: [
+                { key: "shiny", name: "Etoiles Chromees", cost: "3 jetons / pull", color: "pink", img: "/banner-shiny.webp", pity: "Shiny epique a 10 pulls", pool: GACHA_POOLS.shiny, tiers: [
                   { label: "Shiny commun", rate: "50%", dotColor: "bg-white/40", textColor: "text-white/50", rateColor: "text-white/25", data: GACHA_POOLS.shiny.commun },
                   { label: "Shiny rare", rate: "35%", dotColor: "bg-blue-400", textColor: "text-blue-300", rateColor: "text-blue-300/40", data: GACHA_POOLS.shiny.rare },
                   { label: "Shiny epique", rate: "14.7%", dotColor: "bg-purple-400", textColor: "text-purple-300", rateColor: "text-purple-300/40", data: GACHA_POOLS.shiny.epique },
@@ -1674,7 +1674,7 @@ function BoutiqueSection() {
                 <div className="relative z-10">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-16 h-16 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                      <img src="/banner-legendaire.png" alt="Mythes et Legendes" className="w-14 h-14 object-contain" />
+                      <img src="/banner-legendaire.webp" alt="Mythes et Legendes" className="w-14 h-14 object-contain" />
                     </div>
                     <div className="flex-1">
                       <h4 className="text-white font-bold text-base mb-0.5">Mythes &amp; Legendes</h4>

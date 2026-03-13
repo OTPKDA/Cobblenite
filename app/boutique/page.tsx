@@ -31,7 +31,7 @@ const PACKS: Product[] = [
     tagline: "Deviens un dresseur reconnu",
     price: 4.99,
     color: "#a78bfa",
-    customImage: "/vip-pass.png",
+    customImage: "/vip-pass.webp",
     badge: "VIP",
     category: "pack",
     items: [
@@ -58,7 +58,7 @@ const PACKS: Product[] = [
     tagline: "L'elite des dresseurs",
     price: 12.99,
     color: "#fbbf24",
-    customImage: "/vip-plus.png",
+    customImage: "/vip-plus.webp",
     badge: "VIP+",
     category: "pack",
     items: [
@@ -89,7 +89,7 @@ const PACKS: Product[] = [
     tagline: "Tout pour bien lancer ton aventure",
     price: 6.99,
     color: "#4ade80",
-    customImage: "/kit-dresseur.png",
+    customImage: "/kit-dresseur.webp",
     category: "pack",
     items: [
       "1 Pokemon aleatoire (pool ci-dessous)",
@@ -108,7 +108,7 @@ const PACKS: Product[] = [
     oldPrice: 14.99,
     color: "#ef4444",
     sprite: "blaziken",
-    customImage: "/pack-arena.png",
+    customImage: "/pack-arena.webp",
     category: "pack",
     items: [
       "15 000 CobbleDollars",
@@ -125,7 +125,7 @@ const PACKS: Product[] = [
     price: 24.99,
     oldPrice: 29.99,
     color: "#22d3ee",
-    customImage: "/etoile-chromee.png",
+    customImage: "/etoile-chromee.webp",
     sprite: "umbreon",
     badge: "Populaire",
     category: "pack",
@@ -145,7 +145,7 @@ const PACKS: Product[] = [
     price: 39.99,
     oldPrice: 49.99,
     color: "#fbbf24",
-    customImage: "/coffre-champion.png",
+    customImage: "/coffre-champion.webp",
     sprite: "mewtwo",
     category: "pack",
     items: [
@@ -164,7 +164,7 @@ const PACKS: Product[] = [
     price: 49.99,
     oldPrice: 59.99,
     color: "#f472b6",
-    customImage: "/relique-ancestrale.png",
+    customImage: "/relique-ancestrale.webp",
     sprite: "rayquaza",
     badge: "Ultime",
     category: "pack",
