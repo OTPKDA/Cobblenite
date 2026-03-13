@@ -190,6 +190,12 @@ function SuccessContent() {
                     <span className="text-white/70 font-medium">Si tu es deja connecte</span>, la livraison est instantanee. Sinon elle sera livree a ta prochaine connexion.
                   </p>
                 </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-400 text-[10px] font-bold flex items-center justify-center mt-0.5">!</span>
+                  <p className="text-white/50 text-sm">
+                    <span className="text-white/70 font-medium">Tes cles</span> sont accessibles en jeu avec la commande <span className="text-purple-400 font-mono">/keys</span>
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -203,7 +209,7 @@ function SuccessContent() {
             {/* Buttons */}
             <div className="flex gap-3 justify-center">
               <Link
-                href="/boutique"
+                href="/#boutique"
                 className="px-5 py-2.5 bg-white/5 border border-white/10 text-white/60 rounded-xl text-sm font-medium hover:bg-white/10 transition-colors"
               >
                 Retour boutique
