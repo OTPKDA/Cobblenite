@@ -269,6 +269,25 @@ export async function POST(req: NextRequest) {
       } catch { /* ignore invalid promo code */ }
     }
 
+    // Split long metadata across multiple keys (Stripe 500 char limit per value)
+    const productIdsJson = JSON.stringify(allProductIds);
+    const itemsDetailJson = JSON.stringify(items);
+    const metadata: Record<string, string> = {
+      player_name: playerName,
+      promo_code: promoCode || "",
+    };
+    const chunk = (str: string, size: number) => {
+      const r: string[] = [];
+      for (let i = 0; i < str.length; i += size) r.push(str.slice(i, i + size));
+      return r;
+    };
+    chunk(productIdsJson, 490).forEach((c, i) => {
+      metadata[i === 0 ? "product_ids" : `product_ids_${i}`] = c;
+    });
+    chunk(itemsDetailJson, 490).forEach((c, i) => {
+      metadata[i === 0 ? "items_detail" : `items_detail_${i}`] = c;
+    });
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: lineItems,
@@ -276,12 +295,7 @@ export async function POST(req: NextRequest) {
       ...(discounts ? { discounts } : { allow_promotion_codes: true }),
       success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/#boutique`,
-      metadata: {
-        player_name: playerName,
-        product_ids: JSON.stringify(allProductIds),
-        items_detail: JSON.stringify(items),
-        promo_code: promoCode || "",
-      },
+      metadata,
       consent_collection: {
         terms_of_service: "required",
       },
