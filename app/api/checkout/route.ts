@@ -274,7 +274,7 @@ export async function POST(req: NextRequest) {
       line_items: lineItems,
       mode: "payment",
       ...(discounts ? { discounts } : { allow_promotion_codes: true }),
-      success_url: `${siteUrl}/boutique/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/#boutique`,
       metadata: {
         player_name: playerName,
