@@ -83,6 +83,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
       "/craft partout",
       "/pokeheal pour soigner ses Pokemon",
       "/pc accessible partout",
+      "/feed pour se nourrir instantanement",
       "+30 PC Boxes",
       "25 000 CobbleDollars",
       "3 Jetons Gacha",
@@ -1418,13 +1419,22 @@ function BoutiqueSection() {
     setCart((prev) => prev.map((item, i) => {
       if (i !== cartIndex) return item;
       if (item.upsells.some((u) => u.id === upsell.id)) return item;
-      return { ...item, upsells: [...item.upsells, upsell] };
+      let newUpsells = [...item.upsells, upsell];
+      // IV Parfaits requires Choisis ton Pokemon — auto-add it
+      if (upsell.id === "upsell-iv" && !item.upsells.some((u) => u.id === "upsell-choose-pokemon")) {
+        const choosePokemon = getUpsellsForPack(item.product).find((u) => u.id === "upsell-choose-pokemon");
+        if (choosePokemon) newUpsells = [choosePokemon, ...newUpsells];
+      }
+      return { ...item, upsells: newUpsells };
     }));
   };
   const removeUpsell = (cartIndex: number, upsellId: string) => {
     setCart((prev) => prev.map((item, i) => {
       if (i !== cartIndex) return item;
-      const updated = { ...item, upsells: item.upsells.filter((u) => u.id !== upsellId) };
+      let upsellsToRemove = [upsellId];
+      // Removing choose-pokemon also removes IV (IV requires choose-pokemon)
+      if (upsellId === "upsell-choose-pokemon") upsellsToRemove.push("upsell-iv");
+      const updated = { ...item, upsells: item.upsells.filter((u) => !upsellsToRemove.includes(u.id)) };
       // Clear chosen pokemon if removing the choose upsell
       if (upsellId === "upsell-choose-pokemon") updated.chosenPokemon = undefined;
       return updated;
