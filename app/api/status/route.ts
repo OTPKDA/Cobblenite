@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const MC_IP = "79.137.34.10:25565";
+const MC_IP = "play.cobblenite.fr:25565";
 
 export async function GET() {
   try {

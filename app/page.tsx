@@ -1395,7 +1395,7 @@ function BoutiqueSection() {
     if (!playerNameSet || !playerName) return;
     const checkGrade = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_WEBHOOK_URL || "http://79.137.34.10"}/api/player-balance`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_WEBHOOK_URL || "http://163.5.59.238"}/api/player-balance`, {
           method: "POST", headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ player_name: playerName }),
         });
