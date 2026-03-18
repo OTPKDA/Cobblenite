@@ -1337,6 +1337,7 @@ function BoutiqueSection() {
   const [promoLoading, setPromoLoading] = useState(false);
   const [promoApplied, setPromoApplied] = useState<{ code: string; percentOff: number | null; amountOff: number | null; name: string } | null>(null);
   const [promoError, setPromoError] = useState("");
+  const [anonymousMode, setAnonymousMode] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("cobblenite_player");
@@ -1487,7 +1488,7 @@ function BoutiqueSection() {
       }));
       const res = await fetch("/api/checkout", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items, playerName, promoCode: promoApplied?.code || "" }),
+        body: JSON.stringify({ items, playerName, promoCode: promoApplied?.code || "", anonymousMode }),
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
@@ -2138,6 +2139,20 @@ function BoutiqueSection() {
                     <span className="text-white/50 font-medium">Total</span>
                     <span className="text-2xl font-bold text-white">{cartFinal.toFixed(2)}&euro;</span>
                   </div>
+                  {cart.some((c) => ["vip-trainer", "vip-plus"].includes(c.product.id)) && (
+                    <label className="flex items-start gap-3 mb-4 p-3 rounded-lg border border-white/10 bg-white/[0.02] cursor-pointer hover:bg-white/[0.04] transition-colors">
+                      <input
+                        type="checkbox"
+                        checked={anonymousMode}
+                        onChange={(e) => setAnonymousMode(e.target.checked)}
+                        className="mt-0.5 w-4 h-4 rounded accent-purple-500 cursor-pointer"
+                      />
+                      <div>
+                        <span className="text-white/80 text-sm font-medium">Mode anonyme</span>
+                        <p className="text-white/30 text-xs mt-0.5">Je ne souhaite pas recevoir les badges VIP en jeu (chat, tab, au-dessus de la tete). Les avantages restent actifs.</p>
+                      </div>
+                    </label>
+                  )}
                   {error && <p className="text-red-400 text-sm mb-3 text-center">{error}</p>}
                   <button
                     onClick={handleCheckout}

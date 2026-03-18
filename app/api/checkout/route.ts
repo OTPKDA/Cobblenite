@@ -129,10 +129,11 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { items, playerName, promoCode } = body as {
+    const { items, playerName, promoCode, anonymousMode } = body as {
       items: { packId: string; upsells: string[]; isDuplicate?: boolean; crossSellDiscount?: number }[];
       playerName: string;
       promoCode?: string;
+      anonymousMode?: boolean;
     };
 
     // ── Validation pseudo ──
@@ -274,6 +275,7 @@ export async function POST(req: NextRequest) {
     const metadata: Record<string, string> = {
       player_name: playerName,
       promo_code: promoCode || "",
+      vip_hidden: anonymousMode ? "true" : "false",
     };
     const chunk = (str: string, size: number) => {
       const r: string[] = [];
