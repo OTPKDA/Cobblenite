@@ -78,7 +78,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
       "Cooldowns encore plus reduits",
       "/back apres la mort",
       "10 000 Claim Blocks",
-      "Particules exclusives VIP+",
+      "Particules cosmetiques",
       "/fly dans le lobby",
       "/craft partout",
       "/pokeheal pour soigner ses Pokemon",
