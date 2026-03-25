@@ -1085,9 +1085,9 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
-const LAUNCHER_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.4.0/Cobblenite-Launcher-setup-1.4.0.exe";
-const LAUNCHER_MAC_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.4.0/Cobblenite-Launcher-1.4.0-x64.dmg";
-const LAUNCHER_LINUX_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.4.0/Cobblenite-Launcher-1.4.0.AppImage";
+const LAUNCHER_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.5.0/Cobblenite-Launcher-setup-1.5.0.exe";
+const LAUNCHER_MAC_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.5.0/Cobblenite-Launcher-1.5.0-x64.dmg";
+const LAUNCHER_LINUX_URL = "https://github.com/Loukoulele/cobblenite-launcher/releases/download/v1.5.0/Cobblenite-Launcher-1.5.0.AppImage";
 
 const NAV_ITEMS = [
   { id: "hero", label: "Cobblenite", href: "#" },
