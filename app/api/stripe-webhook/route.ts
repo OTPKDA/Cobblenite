@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const WEBHOOK_URL = "http://5.9.102.58:4242/webhook";
+const WEBHOOK_URL = "http://5.9.102.58/webhook";
 
 export async function POST(req: NextRequest) {
   try {
