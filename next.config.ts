@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https://mc-heads.net https://raw.githubusercontent.com",
               "font-src 'self'",
-              "connect-src 'self' https://api.stripe.com https://*.stripe.com https://*.cobblenite.fr http://163.5.59.238",
+              "connect-src 'self' https://api.stripe.com https://*.stripe.com https://*.cobblenite.fr http://5.9.102.58",
               "frame-src https://js.stripe.com https://hooks.stripe.com",
               "object-src 'none'",
               "base-uri 'self'",
