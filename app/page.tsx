@@ -41,11 +41,11 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     badge: "VIP",
     category: "pack",
     items: [
-      "Grade VIP permanent",
+      "Grade VIP (30 jours)",
       "Prefixe [VIP] en chat",
       "Shiny Boost x2",
       "x2 PokeDollars sur dresseurs",
-      "Boost XP x2 (30 jours)",
+      "Boost XP x2",
       "1 Cle VIP / jour",
       "3 Homes",
       "Cooldowns reduits (/tpa, /rtp)",
@@ -54,9 +54,9 @@ const SHOP_PRODUCTS: ShopProduct[] = [
       "Particules cosmetiques",
       "5 000 CobbleDollars",
       "1 Jeton Gacha",
-      "1 Cle VIP gratuite",
+      "2 Cles VIP gratuites",
     ],
-    vip: "Permanent",
+    vip: "30 jours",
   },
   {
     id: "vip-plus",
@@ -68,11 +68,11 @@ const SHOP_PRODUCTS: ShopProduct[] = [
     badge: "VIP+",
     category: "pack",
     items: [
-      "Grade VIP+ permanent",
+      "Grade VIP+ (30 jours)",
       "Prefixe [VIP+] dore en chat",
       "Shiny Boost x3",
       "x3 PokeDollars sur dresseurs",
-      "Boost XP x4 (30 jours)",
+      "Boost XP x4",
       "2 Cles VIP / jour",
       "5 Homes",
       "Cooldowns encore plus reduits",
@@ -88,7 +88,7 @@ const SHOP_PRODUCTS: ShopProduct[] = [
       "25 000 CobbleDollars",
       "3 Jetons Gacha",
     ],
-    vip: "Permanent",
+    vip: "30 jours",
   },
   {
     id: "pack-starter",
@@ -648,7 +648,7 @@ function extractCdAmount(pack: ShopProduct): number {
 
 // Extraire la durée VIP d'un pack
 function extractVipDuration(pack: ShopProduct): string {
-  if (!pack.vip || pack.vip === "Permanent") return "";
+  if (!pack.vip) return "";
   return pack.vip;
 }
 
@@ -796,7 +796,7 @@ function getUpsellsForPack(pack: ShopProduct): ShopUpsell[] {
   if (pack.category !== "pack") return [];
 
   const hasCd = pack.items.some((i) => i.includes("CobbleDollars"));
-  const hasVip = pack.vip && pack.vip !== "Permanent";
+  const hasVip = !!pack.vip;
   const hasPokemon = !!pack.pokemonPool;
   const alreadyShiny = pack.id === "pack-shiny" || pack.id === "pack-legendaire" || pack.id === "pack-legendaire-shiny";
   const cdAmount = extractCdAmount(pack);
