@@ -2743,6 +2743,15 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="relative border-t border-white/5 py-10 px-6 text-center text-sm text-white/20">
+        <div className="flex flex-wrap justify-center gap-4 mb-4 text-xs text-white/40">
+          <a href="/mentions-legales" className="hover:text-white/80 transition-colors">Mentions légales</a>
+          <span className="text-white/20">·</span>
+          <a href="/cgu" className="hover:text-white/80 transition-colors">CGU</a>
+          <span className="text-white/20">·</span>
+          <a href="/cgv" className="hover:text-white/80 transition-colors">CGV</a>
+          <span className="text-white/20">·</span>
+          <a href="/confidentialite" className="hover:text-white/80 transition-colors">Confidentialité</a>
+        </div>
         &copy; {new Date().getFullYear()} Cobblenite. Tous droits réservés.
         <br />
         <span className="text-white/10 text-xs">
